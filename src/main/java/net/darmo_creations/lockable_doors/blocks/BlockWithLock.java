@@ -6,6 +6,7 @@ import net.darmo_creations.lockable_doors.lock_system.LockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.context.LootContext;
@@ -17,9 +18,11 @@ import net.minecraft.text.Style;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -92,12 +95,17 @@ public interface BlockWithLock {
    * @return The list of all stacks to drop.
    */
   default List<ItemStack> getDroppedStacks(BlockState state, LootContext.Builder builder) {
-    ItemStack lock = new ItemStack(ModItems.LOCK);
+    World world = builder.getWorld();
+    Entity entity = builder.getNullable(LootContextParameters.THIS_ENTITY);
+    if (!world.getGameRules().getBoolean(GameRules.DO_TILE_DROPS) || (entity instanceof PlayerEntity p && p.isCreative())) {
+      return Collections.emptyList();
+    }
+    ItemStack stack = new ItemStack(ModItems.LOCK);
     BlockEntity be = builder.getNullable(LootContextParameters.BLOCK_ENTITY);
     if (be instanceof BlockWithLockBlockEntity b) {
-      lock.setNbt(b.getLockData().writeToNBT());
+      ModItems.LOCK.setData(stack, b.getLockData());
     }
-    return Arrays.asList(new ItemStack(LockRegistry.getBaseBlock((Block) this)), lock);
+    return Arrays.asList(new ItemStack(LockRegistry.getBaseBlock((Block) this)), stack);
   }
 
   /**

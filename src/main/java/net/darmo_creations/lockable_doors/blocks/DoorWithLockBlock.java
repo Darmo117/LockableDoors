@@ -6,6 +6,7 @@ import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DoorBlock;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -16,6 +17,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,7 +31,10 @@ public class DoorWithLockBlock extends DoorBlock implements BlockWithLock, Block
   @SuppressWarnings("deprecation")
   @Override
   public List<ItemStack> getDroppedStacks(BlockState state, LootContext.Builder builder) {
-    return BlockWithLock.super.getDroppedStacks(state, builder);
+    if (state.get(HALF) == DoubleBlockHalf.LOWER) {
+      return BlockWithLock.super.getDroppedStacks(state, builder);
+    }
+    return Collections.emptyList();
   }
 
   @Override

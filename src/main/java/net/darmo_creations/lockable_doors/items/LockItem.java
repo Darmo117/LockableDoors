@@ -13,8 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -25,7 +23,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 public class LockItem extends Item {
@@ -52,14 +49,17 @@ public class LockItem extends Item {
     if (player == null) {
       return ActionResult.FAIL;
     }
-    if (lockData.isEmpty()) {
-      this.notifyBlankLock(world, blockPos, player);
-      return ActionResult.FAIL;
-    }
     BlockState blockState = world.getBlockState(blockPos);
     Block block = blockState.getBlock();
+    if (block instanceof BlockWithLock) {
+      this.notifyPlayer(player, "locked_doors.message.lock_already_present");
+    }
     Block lockableBlock = LockRegistry.getLockableBlock(block);
     if (lockableBlock == null) {
+      return ActionResult.FAIL;
+    }
+    if (lockData.isEmpty()) {
+      this.notifyPlayer(player, "locked_doors.message.blank_lock");
       return ActionResult.FAIL;
     }
     if (!player.isCreative()) {
@@ -81,16 +81,17 @@ public class LockItem extends Item {
   }
 
   public void setData(ItemStack stack, final LockData data) {
-    Objects.requireNonNull(data);
-    NbtCompound nbt = new NbtCompound();
-    nbt.put(LOCK_DATA_KEY, data.writeToNBT());
-    stack.setNbt(nbt);
+    if (data != null) {
+      NbtCompound nbt = new NbtCompound();
+      nbt.put(LOCK_DATA_KEY, data.writeToNBT());
+      stack.setNbt(nbt);
+    } else {
+      stack.setNbt(null);
+    }
   }
 
-  protected void notifyBlankLock(World world, final BlockPos pos, PlayerEntity player) {
-    world.playSound(null, pos, SoundEvents.BLOCK_CHEST_LOCKED, SoundCategory.BLOCKS, 1, 1);
-    MutableText message = new TranslatableText("locked_doors.message.blank_lock")
-        .setStyle(Style.EMPTY.withColor(Formatting.RED));
+  protected void notifyPlayer(PlayerEntity player, final String s) {
+    MutableText message = new TranslatableText(s).setStyle(Style.EMPTY.withColor(Formatting.RED));
     player.sendMessage(message, true);
   }
 }
