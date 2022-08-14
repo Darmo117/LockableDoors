@@ -1,6 +1,6 @@
 # Lockable Doors \[1.18.2+]
 
-A simple mod that enables locking any door, trapdoor or fence gate in Minecraft.
+A simple mod that enables locking any vanilla door, trapdoor or fence gate in Minecraft.
 
 ## License
 
