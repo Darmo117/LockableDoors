@@ -1,8 +1,7 @@
 package net.darmo_creations.lockable_doors.items;
 
-import net.darmo_creations.lockable_doors.block_entities.BlockWithLockBlockEntity;
 import net.darmo_creations.lockable_doors.blocks.BlockWithLock;
-import net.darmo_creations.lockable_doors.lock_system.LockRegistry;
+import net.darmo_creations.lockable_doors.lock_system.LockData;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
@@ -20,50 +18,48 @@ import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.Optional;
+
 public class LockRemoverItem extends Item {
   public LockRemoverItem(Settings settings) {
-    super(settings.maxDamage(400));
+    super(settings);
   }
 
   @Override
   public ActionResult useOnBlock(ItemUsageContext context) {
     World world = context.getWorld();
-    BlockPos blockPos = context.getBlockPos();
-    BlockState blockState = world.getBlockState(blockPos);
+    BlockPos pos = context.getBlockPos();
+    BlockState blockState = world.getBlockState(pos);
     Block block = blockState.getBlock();
+    PlayerEntity player = context.getPlayer();
+    if (player == null) {
+      return ActionResult.FAIL;
+    }
     if (block instanceof BlockWithLock bwl) {
-      Block baseBlock = LockRegistry.getBaseBlock(block);
-      if (baseBlock == null) {
+      if (!bwl.hasLock(world, pos)) {
+        this.notifyPlayer(player, "lockable_doors.message.no_lock");
         return ActionResult.FAIL;
       }
-      if (bwl.isLocked(world, blockPos)) {
-        //noinspection ConstantConditions
-        this.notifyLocked(context.getPlayer());
+      if (bwl.isLocked(world, pos)) {
+        this.notifyPlayer(context.getPlayer(), "lockable_doors.message.cannot_remove_while_locked");
         return ActionResult.FAIL;
       }
-      PlayerEntity player = context.getPlayer();
-      if (!world.isClient()) {
-        //noinspection ConstantConditions
-        if (!player.isCreative()) {
-          context.getStack().damage(1, player, p -> p.sendToolBreakStatus(context.getHand()));
-        }
+      if (!player.isCreative()) {
+        context.getStack().damage(1, player, p -> p.sendToolBreakStatus(context.getHand()));
+      }
+      Optional<LockData> lockData = bwl.tryRemoveLock(world, pos);
+      if (lockData.isPresent()) {
         ItemStack stack = new ItemStack(ModItems.LOCK);
-        BlockWithLockBlockEntity be = ((BlockWithLock) block).getBlockEntity(world, blockPos)
-            .orElseGet(() -> ((BlockWithLock) block).getBlockEntity(world, blockPos.down())
-                .orElseThrow(IllegalStateException::new));
-        ModItems.LOCK.setData(stack, be.getLockData());
-        ItemScatterer.spawn(world, blockPos.getX() + 0.5, blockPos.getY(), blockPos.getZ() + 0.5, stack);
-        world.setBlockState(blockPos, baseBlock.getStateWithProperties(blockState));
-        world.playSound(null, blockPos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1, 1);
+        ModItems.LOCK.setData(stack, lockData.get());
+        ItemScatterer.spawn(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, stack);
+        world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1, 1);
+        return ActionResult.SUCCESS;
       }
-      return ActionResult.SUCCESS;
     }
     return ActionResult.FAIL;
   }
 
-  protected void notifyLocked(PlayerEntity player) {
-    MutableText message = new TranslatableText("lockable_doors.message.cannot_remove_while_locked")
-        .setStyle(Style.EMPTY.withColor(Formatting.RED));
-    player.sendMessage(message, true);
+  protected void notifyPlayer(PlayerEntity player, final String message) {
+    player.sendMessage(new TranslatableText(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
   }
 }

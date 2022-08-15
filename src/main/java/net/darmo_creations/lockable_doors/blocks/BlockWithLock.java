@@ -2,6 +2,7 @@ package net.darmo_creations.lockable_doors.blocks;
 
 import net.darmo_creations.lockable_doors.block_entities.BlockWithLockBlockEntity;
 import net.darmo_creations.lockable_doors.items.ModItems;
+import net.darmo_creations.lockable_doors.lock_system.LockData;
 import net.darmo_creations.lockable_doors.lock_system.LockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -21,8 +22,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 
-import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +35,40 @@ import java.util.Optional;
  * @see BlockWithLockBlockEntity
  */
 public interface BlockWithLock {
+  /**
+   * Tries to install a lock on this block.
+   *
+   * @param world The world.
+   * @param pos   Block’s position.
+   * @param data  The lock to install.
+   * @return True if the lock could be installed, false otherwise.
+   */
+  default boolean tryInstallLock(World world, final BlockPos pos, final LockData data) {
+    return this.getBlockEntity(world, pos).map(be -> be.tryInstallLock(data)).orElse(false);
+  }
+
+  /**
+   * Tries to remove the lock from this block.
+   *
+   * @param world The world.
+   * @param pos   Block’s position.
+   * @return The lock that was removed or an empty value if there was none.
+   */
+  default Optional<LockData> tryRemoveLock(World world, final BlockPos pos) {
+    return this.getBlockEntity(world, pos).flatMap(BlockWithLockBlockEntity::tryRemoveLock);
+  }
+
+  /**
+   * Checks whether this block has a lock.
+   *
+   * @param world The world.
+   * @param pos   Block’s position.
+   * @return True if the block has a lock, false if it has none.
+   */
+  default boolean hasLock(World world, BlockPos pos) {
+    return this.getBlockEntity(world, pos).map(BlockWithLockBlockEntity::hasLock).orElse(false);
+  }
+
   /**
    * Tries to lock this block with the given key.
    *
@@ -70,22 +105,6 @@ public interface BlockWithLock {
   }
 
   /**
-   * Returns the block entity at the given position.
-   *
-   * @param world The world.
-   * @param pos   Block entity’s position.
-   * @return An optional containing the block entity if it exists and is a {@link BlockWithLockBlockEntity},
-   * an empty optional otherwise.
-   */
-  default Optional<BlockWithLockBlockEntity> getBlockEntity(World world, BlockPos pos) {
-    BlockEntity blockEntity = world.getBlockEntity(pos);
-    if (!(blockEntity instanceof BlockWithLockBlockEntity)) {
-      return Optional.empty();
-    }
-    return Optional.of((BlockWithLockBlockEntity) blockEntity);
-  }
-
-  /**
    * Returns the item stacks to drop whenever this block is destroyed.
    * <p>
    * All lockable blocks will drop their base block and their lock separately.
@@ -97,15 +116,20 @@ public interface BlockWithLock {
   default List<ItemStack> getDroppedStacks(BlockState state, LootContext.Builder builder) {
     World world = builder.getWorld();
     Entity entity = builder.getNullable(LootContextParameters.THIS_ENTITY);
-    if (!world.getGameRules().getBoolean(GameRules.DO_TILE_DROPS) || (entity instanceof PlayerEntity p && p.isCreative())) {
+    if (!world.getGameRules().getBoolean(GameRules.DO_TILE_DROPS)
+        || (entity instanceof PlayerEntity p && p.isCreative())) {
       return Collections.emptyList();
     }
-    ItemStack stack = new ItemStack(ModItems.LOCK);
-    BlockEntity be = builder.getNullable(LootContextParameters.BLOCK_ENTITY);
-    if (be instanceof BlockWithLockBlockEntity b) {
-      ModItems.LOCK.setData(stack, b.getLockData());
+    List<ItemStack> stacks = new LinkedList<>();
+    stacks.add(new ItemStack(LockRegistry.getBaseBlock((Block) this)));
+    if (builder.getNullable(LootContextParameters.BLOCK_ENTITY) instanceof BlockWithLockBlockEntity be) {
+      be.getLockData().ifPresent(lockData -> {
+        ItemStack stack = new ItemStack(ModItems.LOCK);
+        ModItems.LOCK.setData(stack, lockData);
+        stacks.add(stack);
+      });
     }
-    return Arrays.asList(new ItemStack(LockRegistry.getBaseBlock((Block) this)), stack);
+    return stacks;
   }
 
   /**
@@ -120,5 +144,21 @@ public interface BlockWithLock {
     MutableText message = new TranslatableText("lockable_doors.message.locked_block")
         .setStyle(Style.EMPTY.withColor(Formatting.RED));
     player.sendMessage(message, true);
+  }
+
+  /**
+   * Returns the block entity at the given position.
+   *
+   * @param world The world.
+   * @param pos   Block entity’s position.
+   * @return An optional containing the block entity if it exists and is a {@link BlockWithLockBlockEntity},
+   * an empty optional otherwise.
+   */
+  private Optional<BlockWithLockBlockEntity> getBlockEntity(World world, BlockPos pos) {
+    BlockEntity blockEntity = world.getBlockEntity(pos);
+    if (!(blockEntity instanceof BlockWithLockBlockEntity)) {
+      return Optional.empty();
+    }
+    return Optional.of((BlockWithLockBlockEntity) blockEntity);
   }
 }

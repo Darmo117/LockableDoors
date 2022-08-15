@@ -78,7 +78,7 @@ public final class ModBlocks {
    */
   private static <T extends Block, U extends Block> T registerLockableBlock(final String name, final Function<U, T> factory, final U baseBlock) {
     T lockableBlock = factory.apply(baseBlock);
-    register(name, lockableBlock, false);
+    register(name, lockableBlock, true);
     LockRegistry.add(baseBlock, lockableBlock);
     setFlammability(lockableBlock, baseBlock);
     return lockableBlock;

@@ -54,20 +54,24 @@ public class KeyItem extends Item {
     if (player == null) {
       return ActionResult.FAIL;
     }
-    if (block instanceof BlockWithLock b) {
+    if (block instanceof BlockWithLock bwl) {
+      if (!bwl.hasLock(world, pos)) {
+        this.notifyError(world, pos, player, "lockable_doors.message.no_lock");
+        return ActionResult.FAIL;
+      }
       ItemStack stack = context.getStack();
       boolean ok;
-      boolean wasLocked = b.isLocked(world, pos);
+      boolean wasLocked = bwl.isLocked(world, pos);
       if (wasLocked) {
-        ok = b.tryUnlock(world, pos, stack);
+        ok = bwl.tryUnlock(world, pos, stack);
       } else {
-        ok = b.tryLock(world, pos, stack);
+        ok = bwl.tryLock(world, pos, stack);
       }
       if (ok) {
         this.notifySuccess(world, pos, player, !wasLocked);
         return ActionResult.SUCCESS;
       } else {
-        this.notifyWrongKey(world, pos, player);
+        this.notifyError(world, pos, player, "lockable_doors.message.wrong_key");
       }
     }
     return ActionResult.FAIL;
@@ -82,6 +86,9 @@ public class KeyItem extends Item {
   }
 
   public void setData(ItemStack stack, final String data) {
+    if (stack.getItem() != this) {
+      return;
+    }
     Objects.requireNonNull(data);
     NbtCompound nbt = new NbtCompound();
     nbt.putString(KEY_DATA_KEY, data);
@@ -94,10 +101,8 @@ public class KeyItem extends Item {
     player.sendMessage(message, true);
   }
 
-  protected void notifyWrongKey(World world, final BlockPos pos, PlayerEntity player) {
+  protected void notifyError(World world, final BlockPos pos, PlayerEntity player, final String message) {
     world.playSound(null, pos, SoundEvents.BLOCK_CHEST_LOCKED, SoundCategory.BLOCKS, 1, 1);
-    MutableText message = new TranslatableText("lockable_doors.message.wrong_key")
-        .setStyle(Style.EMPTY.withColor(Formatting.RED));
-    player.sendMessage(message, true);
+    player.sendMessage(new TranslatableText(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
   }
 }

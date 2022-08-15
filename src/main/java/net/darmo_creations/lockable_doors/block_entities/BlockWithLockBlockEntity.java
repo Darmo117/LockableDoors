@@ -10,7 +10,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.util.math.BlockPos;
 
-import java.util.Objects;
 import java.util.Optional;
 
 public class BlockWithLockBlockEntity extends BlockEntity {
@@ -25,17 +24,12 @@ public class BlockWithLockBlockEntity extends BlockEntity {
     this.lockData = null;
   }
 
-  public LockData getLockData() {
-    return this.lockData;
-  }
-
-  public void setLockData(final LockData lockData) {
-    this.lockData = Objects.requireNonNull(lockData);
-    this.markDirty();
+  public Optional<LockData> getLockData() {
+    return Optional.ofNullable(this.lockData);
   }
 
   public boolean tryLock(final ItemStack itemStack) {
-    if (this.lockData == null) {
+    if (!this.hasLock()) {
       return false;
     }
     Optional<String> key = this.getKeyData(itemStack);
@@ -51,7 +45,7 @@ public class BlockWithLockBlockEntity extends BlockEntity {
   }
 
   public boolean tryUnlock(final ItemStack itemStack) {
-    if (this.lockData == null) {
+    if (!this.hasLock()) {
       return false;
     }
     Optional<String> key = this.getKeyData(itemStack);
@@ -64,6 +58,29 @@ public class BlockWithLockBlockEntity extends BlockEntity {
       }
     }
     return false;
+  }
+
+  public boolean tryInstallLock(final LockData data) {
+    if (this.hasLock()) {
+      return false;
+    }
+    this.lockData = data;
+    this.markDirty();
+    return true;
+  }
+
+  public Optional<LockData> tryRemoveLock() {
+    if (!this.hasLock()) {
+      return Optional.empty();
+    }
+    LockData old = this.lockData;
+    this.lockData = null;
+    this.markDirty();
+    return Optional.of(old);
+  }
+
+  public boolean hasLock() {
+    return this.lockData != null;
   }
 
   public boolean isLocked() {
@@ -81,7 +98,7 @@ public class BlockWithLockBlockEntity extends BlockEntity {
   @Override
   protected void writeNbt(NbtCompound nbt) {
     super.writeNbt(nbt);
-    if (this.lockData != null) {
+    if (this.hasLock()) {
       nbt.put(LOCK_DATA_KEY, this.lockData.writeToNBT());
     }
     nbt.putBoolean(LOCKED_KEY, this.locked);
@@ -95,6 +112,6 @@ public class BlockWithLockBlockEntity extends BlockEntity {
     } else {
       this.lockData = null;
     }
-    this.locked = nbt.getBoolean(LOCKED_KEY);
+    this.locked = this.hasLock() && nbt.getBoolean(LOCKED_KEY);
   }
 }

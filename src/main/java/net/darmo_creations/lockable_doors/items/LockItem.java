@@ -1,9 +1,7 @@
 package net.darmo_creations.lockable_doors.items;
 
-import net.darmo_creations.lockable_doors.block_entities.BlockWithLockBlockEntity;
 import net.darmo_creations.lockable_doors.blocks.BlockWithLock;
 import net.darmo_creations.lockable_doors.lock_system.LockData;
-import net.darmo_creations.lockable_doors.lock_system.LockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
@@ -46,35 +44,31 @@ public class LockItem extends Item {
   public ActionResult useOnBlock(ItemUsageContext context) {
     Optional<LockData> lockData = this.getData(context.getStack());
     World world = context.getWorld();
-    BlockPos blockPos = context.getBlockPos();
+    BlockPos pos = context.getBlockPos();
     PlayerEntity player = context.getPlayer();
     if (player == null) {
       return ActionResult.FAIL;
     }
-    BlockState blockState = world.getBlockState(blockPos);
+    BlockState blockState = world.getBlockState(pos);
     Block block = blockState.getBlock();
-    if (block instanceof BlockWithLock) {
-      this.notifyPlayer(player, "lockable_doors.message.lock_already_present");
+    if (block instanceof BlockWithLock bwl) {
+      if (bwl.hasLock(world, pos)) {
+        this.notifyPlayer(player, "lockable_doors.message.lock_already_present");
+        return ActionResult.FAIL;
+      }
+      if (lockData.isEmpty()) {
+        this.notifyPlayer(player, "lockable_doors.message.blank_lock");
+        return ActionResult.FAIL;
+      }
+      if (bwl.tryInstallLock(world, pos, lockData.get())) {
+        if (!player.isCreative()) {
+          context.getStack().decrement(1);
+        }
+        world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1, 1);
+        return ActionResult.SUCCESS;
+      }
     }
-    Block lockableBlock = LockRegistry.getLockableBlock(block);
-    if (lockableBlock == null) {
-      return ActionResult.FAIL;
-    }
-    if (lockData.isEmpty()) {
-      this.notifyPlayer(player, "lockable_doors.message.blank_lock");
-      return ActionResult.FAIL;
-    }
-    if (!player.isCreative()) {
-      context.getStack().damage(1, player, p -> p.sendToolBreakStatus(context.getHand()));
-    }
-    world.setBlockState(blockPos, lockableBlock.getStateWithProperties(blockState));
-    System.out.println(world.getBlockEntity(blockPos)); // DEBUG
-    // FIXME does not work with doors
-    BlockWithLockBlockEntity be = ((BlockWithLock) lockableBlock).getBlockEntity(world, blockPos)
-        .orElseThrow(IllegalStateException::new);
-    be.setLockData(lockData.get());
-    world.playSound(null, blockPos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1, 1);
-    return ActionResult.SUCCESS;
+    return ActionResult.FAIL;
   }
 
   public Optional<LockData> getData(final ItemStack stack) {
@@ -86,6 +80,9 @@ public class LockItem extends Item {
   }
 
   public void setData(ItemStack stack, final LockData data) {
+    if (stack.getItem() != this) {
+      return;
+    }
     if (data != null) {
       NbtCompound nbt = new NbtCompound();
       nbt.put(LOCK_DATA_KEY, data.writeToNBT());

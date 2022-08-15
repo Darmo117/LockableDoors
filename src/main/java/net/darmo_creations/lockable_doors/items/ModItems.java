@@ -11,12 +11,14 @@ import net.minecraft.util.registry.Registry;
  */
 @SuppressWarnings("unused")
 public final class ModItems {
-  public static final KeyItem KEY =
-      register("key", new KeyItem(new FabricItemSettings().group(LockableDoors.ITEM_GROUP)));
+  public static final Item LOCK_HOUSING =
+      register("lock_housing", new Item(new FabricItemSettings().group(LockableDoors.ITEM_GROUP)));
   public static final LockItem LOCK =
       register("lock", new LockItem(new FabricItemSettings().group(LockableDoors.ITEM_GROUP)));
+  public static final KeyItem KEY =
+      register("key", new KeyItem(new FabricItemSettings().group(LockableDoors.ITEM_GROUP)));
   public static final LockRemoverItem LOCK_REMOVER =
-      register("lock_remover", new LockRemoverItem(new FabricItemSettings().group(LockableDoors.ITEM_GROUP)));
+      register("lock_remover", new LockRemoverItem(new FabricItemSettings().group(LockableDoors.ITEM_GROUP).maxDamage(400)));
 
   /**
    * Registers an item.
