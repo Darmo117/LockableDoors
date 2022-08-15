@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * A door block that can be locked.
@@ -33,6 +34,30 @@ public class DoorWithLockBlock extends DoorBlock implements BlockWithLock, Block
   @Override
   protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
     super.appendProperties(builder.add(HAS_LOCK));
+  }
+
+  @Override
+  public void setHasLockProperty(World world, BlockPos pos, BlockState state, boolean hasLock) {
+    BlockWithLock.super.setHasLockProperty(world, pos, state, hasLock);
+    BlockPos otherPos;
+    if (state.get(HALF) == DoubleBlockHalf.UPPER) {
+      otherPos = pos.down();
+    } else {
+      otherPos = pos.up();
+    }
+    BlockState otherState = world.getBlockState(otherPos);
+    if (otherState.isOf(this) && otherState.get(HALF) != state.get(HALF)) {
+      world.setBlockState(otherPos, otherState.with(HAS_LOCK, hasLock));
+    }
+  }
+
+  @Override
+  public Optional<BlockWithLockBlockEntity> getBlockEntity(World world, BlockPos pos) {
+    BlockState state = world.getBlockState(pos);
+    if (state.get(HALF) == DoubleBlockHalf.UPPER) {
+      pos = pos.down();
+    }
+    return BlockWithLock.super.getBlockEntity(world, pos);
   }
 
   @SuppressWarnings("deprecation")

@@ -109,6 +109,12 @@ public interface BlockWithLock {
     return this.getBlockEntity(world, pos).map(BlockWithLockBlockEntity::isLocked).orElse(false);
   }
 
+  default void setHasLockProperty(World world, BlockPos pos, BlockState state, boolean hasLock) {
+    if (state.contains(HAS_LOCK)) {
+      world.setBlockState(pos, state.with(HAS_LOCK, hasLock));
+    }
+  }
+
   /**
    * Returns the item stacks to drop whenever this block is destroyed.
    * <p>
@@ -159,7 +165,7 @@ public interface BlockWithLock {
    * @return An optional containing the block entity if it exists and is a {@link BlockWithLockBlockEntity},
    * an empty optional otherwise.
    */
-  private Optional<BlockWithLockBlockEntity> getBlockEntity(World world, BlockPos pos) {
+  default Optional<BlockWithLockBlockEntity> getBlockEntity(World world, BlockPos pos) {
     BlockEntity blockEntity = world.getBlockEntity(pos);
     if (!(blockEntity instanceof BlockWithLockBlockEntity)) {
       return Optional.empty();

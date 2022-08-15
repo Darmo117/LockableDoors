@@ -123,8 +123,8 @@ public class BlockWithLockBlockEntity extends BlockEntity {
     //noinspection ConstantConditions
     BlockState blockState = this.getWorld().getBlockState(this.pos);
     Block block = blockState.getBlock();
-    if (block instanceof BlockWithLock && blockState.getProperties().contains(BlockWithLock.HAS_LOCK)) {
-      this.getWorld().setBlockState(this.pos, blockState.with(BlockWithLock.HAS_LOCK, this.hasLock()));
+    if (block instanceof BlockWithLock bwl && blockState.getProperties().contains(BlockWithLock.HAS_LOCK)) {
+      bwl.setHasLockProperty(this.getWorld(), this.pos, blockState, this.hasLock());
     }
   }
 }
