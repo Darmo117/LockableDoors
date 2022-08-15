@@ -3,7 +3,6 @@ package net.darmo_creations.lockable_doors.blocks;
 import net.darmo_creations.lockable_doors.block_entities.BlockWithLockBlockEntity;
 import net.darmo_creations.lockable_doors.items.ModItems;
 import net.darmo_creations.lockable_doors.lock_system.LockData;
-import net.darmo_creations.lockable_doors.lock_system.LockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -121,7 +120,7 @@ public interface BlockWithLock {
       return Collections.emptyList();
     }
     List<ItemStack> stacks = new LinkedList<>();
-    stacks.add(new ItemStack(LockRegistry.getBaseBlock((Block) this)));
+    stacks.add(new ItemStack((Block) this));
     if (builder.getNullable(LootContextParameters.BLOCK_ENTITY) instanceof BlockWithLockBlockEntity be) {
       be.getLockData().ifPresent(lockData -> {
         ItemStack stack = new ItemStack(ModItems.LOCK);

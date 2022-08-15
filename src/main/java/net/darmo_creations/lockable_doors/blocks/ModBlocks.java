@@ -1,7 +1,6 @@
 package net.darmo_creations.lockable_doors.blocks;
 
 import net.darmo_creations.lockable_doors.LockableDoors;
-import net.darmo_creations.lockable_doors.lock_system.LockRegistry;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -79,7 +78,6 @@ public final class ModBlocks {
   private static <T extends Block, U extends Block> T registerLockableBlock(final String name, final Function<U, T> factory, final U baseBlock) {
     T lockableBlock = factory.apply(baseBlock);
     register(name, lockableBlock, true);
-    LockRegistry.add(baseBlock, lockableBlock);
     setFlammability(lockableBlock, baseBlock);
     return lockableBlock;
   }
