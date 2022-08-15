@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:jungle_trapdoor"
+    },
+    {
+      "item": "lockable_trapdoors:lock_housing"
+    }
+  ],
+  "result": {
+    "item": "lockable_trapdoors:lockable_jungle_trapdoor"
+  }
+}

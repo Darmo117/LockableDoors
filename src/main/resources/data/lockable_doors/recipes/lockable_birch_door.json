@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:birch_door"
+    },
+    {
+      "item": "lockable_doors:lock_housing"
+    }
+  ],
+  "result": {
+    "item": "lockable_doors:lockable_birch_door"
+  }
+}

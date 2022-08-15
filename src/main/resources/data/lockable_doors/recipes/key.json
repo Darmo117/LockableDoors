@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "NN",
-    " N"
+    "##",
+    " #"
   ],
   "key": {
-    "N": {
-      "tag": "minecraft:iron_nugget"
+    "#": {
+      "item": "minecraft:iron_nugget"
     }
   },
   "result": {

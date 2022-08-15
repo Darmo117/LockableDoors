@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:acacia_fence_gate"
+    },
+    {
+      "item": "lockable_fence_gates:lock_housing"
+    }
+  ],
+  "result": {
+    "item": "lockable_fence_gates:lockable_acacia_fence_gate"
+  }
+}

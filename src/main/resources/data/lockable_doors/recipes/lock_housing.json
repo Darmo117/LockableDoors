@@ -7,14 +7,14 @@
   ],
   "key": {
     "I": {
-      "item": "minecraft:copper_ingot"
+      "item": "minecraft:iron_ingot"
     },
     "N": {
       "item": "minecraft:iron_nugget"
     }
   },
   "result": {
-    "item": "lockable_doors:lock",
+    "item": "lockable_doors:lock_housing",
     "count": 2
   }
 }
