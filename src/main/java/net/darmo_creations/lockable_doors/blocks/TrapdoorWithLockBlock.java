@@ -9,6 +9,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.context.LootContext;
+import net.minecraft.state.StateManager;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -23,6 +24,12 @@ import java.util.List;
 public class TrapdoorWithLockBlock extends TrapdoorBlock implements BlockWithLock, BlockEntityProvider {
   public TrapdoorWithLockBlock(final TrapdoorBlock baseBlock) {
     super(Settings.copy(baseBlock));
+    this.setDefaultState(this.getDefaultState().with(HAS_LOCK, false));
+  }
+
+  @Override
+  protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    super.appendProperties(builder.add(HAS_LOCK));
   }
 
   @SuppressWarnings("deprecation")

@@ -1,7 +1,9 @@
 package net.darmo_creations.lockable_doors.block_entities;
 
+import net.darmo_creations.lockable_doors.blocks.BlockWithLock;
 import net.darmo_creations.lockable_doors.items.KeyItem;
 import net.darmo_creations.lockable_doors.lock_system.LockData;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.Item;
@@ -26,6 +28,31 @@ public class BlockWithLockBlockEntity extends BlockEntity {
 
   public Optional<LockData> getLockData() {
     return Optional.ofNullable(this.lockData);
+  }
+
+  public boolean tryInstallLock(final LockData data) {
+    if (this.hasLock()) {
+      return false;
+    }
+    this.lockData = data;
+    this.updateBlockState();
+    this.markDirty();
+    return true;
+  }
+
+  public Optional<LockData> tryRemoveLock() {
+    if (!this.hasLock()) {
+      return Optional.empty();
+    }
+    LockData old = this.lockData;
+    this.lockData = null;
+    this.updateBlockState();
+    this.markDirty();
+    return Optional.of(old);
+  }
+
+  public boolean hasLock() {
+    return this.lockData != null;
   }
 
   public boolean tryLock(final ItemStack itemStack) {
@@ -60,29 +87,6 @@ public class BlockWithLockBlockEntity extends BlockEntity {
     return false;
   }
 
-  public boolean tryInstallLock(final LockData data) {
-    if (this.hasLock()) {
-      return false;
-    }
-    this.lockData = data;
-    this.markDirty();
-    return true;
-  }
-
-  public Optional<LockData> tryRemoveLock() {
-    if (!this.hasLock()) {
-      return Optional.empty();
-    }
-    LockData old = this.lockData;
-    this.lockData = null;
-    this.markDirty();
-    return Optional.of(old);
-  }
-
-  public boolean hasLock() {
-    return this.lockData != null;
-  }
-
   public boolean isLocked() {
     return this.locked;
   }
@@ -113,5 +117,14 @@ public class BlockWithLockBlockEntity extends BlockEntity {
       this.lockData = null;
     }
     this.locked = this.hasLock() && nbt.getBoolean(LOCKED_KEY);
+  }
+
+  private void updateBlockState() {
+    //noinspection ConstantConditions
+    BlockState blockState = this.getWorld().getBlockState(this.pos);
+    Block block = blockState.getBlock();
+    if (block instanceof BlockWithLock && blockState.getProperties().contains(BlockWithLock.HAS_LOCK)) {
+      this.getWorld().setBlockState(this.pos, blockState.with(BlockWithLock.HAS_LOCK, this.hasLock()));
+    }
   }
 }

@@ -13,6 +13,7 @@ import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.TranslatableText;
@@ -34,6 +35,11 @@ import java.util.Optional;
  * @see BlockWithLockBlockEntity
  */
 public interface BlockWithLock {
+  /**
+   * This property’s purpose should be reserved to cosmetic uses only.
+   */
+  BooleanProperty HAS_LOCK = BooleanProperty.of("has_lock");
+
   /**
    * Tries to install a lock on this block.
    *
