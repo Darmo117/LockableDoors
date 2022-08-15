@@ -1,0 +1,135 @@
+{
+  "variants": {
+    "has_lock=false,facing=east,half=bottom,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_bottom_no_lock",
+      "y": 90
+    },
+    "has_lock=false,facing=east,half=bottom,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_no_lock",
+      "y": 90
+    },
+    "has_lock=false,facing=east,half=top,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_top_no_lock",
+      "y": 90
+    },
+    "has_lock=false,facing=east,half=top,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_no_lock",
+      "x": 180,
+      "y": 270
+    },
+    "has_lock=false,facing=north,half=bottom,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_bottom_no_lock"
+    },
+    "has_lock=false,facing=north,half=bottom,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_no_lock"
+    },
+    "has_lock=false,facing=north,half=top,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_top_no_lock"
+    },
+    "has_lock=false,facing=north,half=top,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_no_lock",
+      "x": 180,
+      "y": 180
+    },
+    "has_lock=false,facing=south,half=bottom,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_bottom_no_lock",
+      "y": 180
+    },
+    "has_lock=false,facing=south,half=bottom,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_no_lock",
+      "y": 180
+    },
+    "has_lock=false,facing=south,half=top,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_top_no_lock",
+      "y": 180
+    },
+    "has_lock=false,facing=south,half=top,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_no_lock",
+      "x": 180,
+      "y": 0
+    },
+    "has_lock=false,facing=west,half=bottom,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_bottom_no_lock",
+      "y": 270
+    },
+    "has_lock=false,facing=west,half=bottom,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_no_lock",
+      "y": 270
+    },
+    "has_lock=false,facing=west,half=top,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_top_no_lock",
+      "y": 270
+    },
+    "has_lock=false,facing=west,half=top,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_no_lock",
+      "x": 180,
+      "y": 90
+    },
+
+    "has_lock=true,facing=east,half=bottom,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_bottom_with_lock",
+      "y": 90
+    },
+    "has_lock=true,facing=east,half=bottom,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_with_lock",
+      "y": 90
+    },
+    "has_lock=true,facing=east,half=top,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_top_with_lock",
+      "y": 90
+    },
+    "has_lock=true,facing=east,half=top,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_with_lock",
+      "x": 180,
+      "y": 270
+    },
+    "has_lock=true,facing=north,half=bottom,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_bottom_with_lock"
+    },
+    "has_lock=true,facing=north,half=bottom,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_with_lock"
+    },
+    "has_lock=true,facing=north,half=top,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_top_with_lock"
+    },
+    "has_lock=true,facing=north,half=top,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_with_lock",
+      "x": 180,
+      "y": 180
+    },
+    "has_lock=true,facing=south,half=bottom,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_bottom_with_lock",
+      "y": 180
+    },
+    "has_lock=true,facing=south,half=bottom,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_with_lock",
+      "y": 180
+    },
+    "has_lock=true,facing=south,half=top,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_top_with_lock",
+      "y": 180
+    },
+    "has_lock=true,facing=south,half=top,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_with_lock",
+      "x": 180,
+      "y": 0
+    },
+    "has_lock=true,facing=west,half=bottom,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_bottom_with_lock",
+      "y": 270
+    },
+    "has_lock=true,facing=west,half=bottom,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_with_lock",
+      "y": 270
+    },
+    "has_lock=true,facing=west,half=top,open=false": {
+      "model": "lockable_doors:block/spruce_trapdoor_top_with_lock",
+      "y": 270
+    },
+    "has_lock=true,facing=west,half=top,open=true": {
+      "model": "lockable_doors:block/spruce_trapdoor_open_with_lock",
+      "x": 180,
+      "y": 90
+    }
+  }
+}

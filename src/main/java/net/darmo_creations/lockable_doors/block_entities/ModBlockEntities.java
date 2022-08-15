@@ -13,36 +13,36 @@ import net.minecraft.util.registry.Registry;
  * Declares all block entity types added by this mod.
  */
 public final class ModBlockEntities {
-  public static final BlockEntityType<BlockWithLockBlockEntity> BLOCK_WITH_LOCK_BLOCK_ENTITY_TYPE =
-      register("block_with_lock_block_entity_type", BlockWithLockBlockEntity::new,
-          ModBlocks.OAK_DOOR_WITH_LOCK,
-          ModBlocks.BIRCH_DOOR_WITH_LOCK,
-          ModBlocks.SPRUCE_DOOR_WITH_LOCK,
-          ModBlocks.JUNGLE_DOOR_WITH_LOCK,
-          ModBlocks.ACACIA_DOOR_WITH_LOCK,
-          ModBlocks.DARK_OAK_DOOR_WITH_LOCK,
-          ModBlocks.CRIMSON_DOOR_WITH_LOCK,
-          ModBlocks.WARPED_DOOR_WITH_LOCK,
-          ModBlocks.IRON_DOOR_WITH_LOCK,
+  public static final BlockEntityType<LockableBlockEntity> LOCKABLE_BLOCK_ENTITY_TYPE =
+      register("lockable_block_entity_type", LockableBlockEntity::new,
+          ModBlocks.LOCKABLE_OAK_DOOR,
+          ModBlocks.LOCKABLE_BIRCH_DOOR,
+          ModBlocks.LOCKABLE_SPRUCE_DOOR,
+          ModBlocks.LOCKABLE_JUNGLE_DOOR,
+          ModBlocks.LOCKABLE_ACACIA_DOOR,
+          ModBlocks.LOCKABLE_DARK_OAK_DOOR,
+          ModBlocks.LOCKABLE_CRIMSON_DOOR,
+          ModBlocks.LOCKABLE_WARPED_DOOR,
+          ModBlocks.LOCKABLE_IRON_DOOR,
 
-          ModBlocks.OAK_TRAPDOOR_WITH_LOCK,
-          ModBlocks.BIRCH_TRAPDOOR_WITH_LOCK,
-          ModBlocks.SPRUCE_TRAPDOOR_WITH_LOCK,
-          ModBlocks.JUNGLE_TRAPDOOR_WITH_LOCK,
-          ModBlocks.ACACIA_TRAPDOOR_WITH_LOCK,
-          ModBlocks.DARK_OAK_TRAPDOOR_WITH_LOCK,
-          ModBlocks.CRIMSON_TRAPDOOR_WITH_LOCK,
-          ModBlocks.WARPED_TRAPDOOR_WITH_LOCK,
-          ModBlocks.IRON_TRAPDOOR_WITH_LOCK,
+          ModBlocks.LOCKABLE_OAK_TRAPDOOR,
+          ModBlocks.LOCKABLE_BIRCH_TRAPDOOR,
+          ModBlocks.LOCKABLE_SPRUCE_TRAPDOOR,
+          ModBlocks.LOCKABLE_JUNGLE_TRAPDOOR,
+          ModBlocks.LOCKABLE_ACACIA_TRAPDOOR,
+          ModBlocks.LOCKABLE_DARK_OAK_TRAPDOOR,
+          ModBlocks.LOCKABLE_CRIMSON_TRAPDOOR,
+          ModBlocks.LOCKABLE_WARPED_TRAPDOOR,
+          ModBlocks.LOCKABLE_IRON_TRAPDOOR,
 
-          ModBlocks.OAK_FENCE_GATE_WITH_LOCK,
-          ModBlocks.BIRCH_FENCE_GATE_WITH_LOCK,
-          ModBlocks.SPRUCE_FENCE_GATE_WITH_LOCK,
-          ModBlocks.JUNGLE_FENCE_GATE_WITH_LOCK,
-          ModBlocks.ACACIA_FENCE_GATE_WITH_LOCK,
-          ModBlocks.DARK_OAK_FENCE_GATE_WITH_LOCK,
-          ModBlocks.CRIMSON_FENCE_GATE_WITH_LOCK,
-          ModBlocks.WARPED_FENCE_GATE_WITH_LOCK
+          ModBlocks.LOCKABLE_OAK_FENCE_GATE,
+          ModBlocks.LOCKABLE_BIRCH_FENCE_GATE,
+          ModBlocks.LOCKABLE_SPRUCE_FENCE_GATE,
+          ModBlocks.LOCKABLE_JUNGLE_FENCE_GATE,
+          ModBlocks.LOCKABLE_ACACIA_FENCE_GATE,
+          ModBlocks.LOCKABLE_DARK_OAK_FENCE_GATE,
+          ModBlocks.LOCKABLE_CRIMSON_FENCE_GATE,
+          ModBlocks.LOCKABLE_WARPED_FENCE_GATE
       );
 
   /**

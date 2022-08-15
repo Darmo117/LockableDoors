@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "lockable_doors:item/spruce_door_with_lock"
-  }
-}

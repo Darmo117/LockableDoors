@@ -23,60 +23,60 @@ public final class ModBlocks {
       register("locksmithing_station", new LocksmithingStationBlock(), true);
 
   // Doors
-  public static final Block OAK_DOOR_WITH_LOCK =
-      registerLockableBlock("oak_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.OAK_DOOR);
-  public static final Block BIRCH_DOOR_WITH_LOCK =
-      registerLockableBlock("birch_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.BIRCH_DOOR);
-  public static final Block SPRUCE_DOOR_WITH_LOCK =
-      registerLockableBlock("spruce_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.SPRUCE_DOOR);
-  public static final Block JUNGLE_DOOR_WITH_LOCK =
-      registerLockableBlock("jungle_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.JUNGLE_DOOR);
-  public static final Block ACACIA_DOOR_WITH_LOCK =
-      registerLockableBlock("acacia_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.ACACIA_DOOR);
-  public static final Block DARK_OAK_DOOR_WITH_LOCK =
-      registerLockableBlock("dark_oak_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.DARK_OAK_DOOR);
-  public static final Block CRIMSON_DOOR_WITH_LOCK =
-      registerLockableBlock("crimson_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.CRIMSON_DOOR);
-  public static final Block WARPED_DOOR_WITH_LOCK =
-      registerLockableBlock("warped_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.WARPED_DOOR);
-  public static final Block IRON_DOOR_WITH_LOCK =
-      registerLockableBlock("iron_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.IRON_DOOR);
+  public static final Block LOCKABLE_OAK_DOOR =
+      registerLockableBlock("lockable_oak_door", LockableDoorBlock::new, (DoorBlock) Blocks.OAK_DOOR);
+  public static final Block LOCKABLE_BIRCH_DOOR =
+      registerLockableBlock("lockable_birch_door", LockableDoorBlock::new, (DoorBlock) Blocks.BIRCH_DOOR);
+  public static final Block LOCKABLE_SPRUCE_DOOR =
+      registerLockableBlock("lockable_spruce_door", LockableDoorBlock::new, (DoorBlock) Blocks.SPRUCE_DOOR);
+  public static final Block LOCKABLE_JUNGLE_DOOR =
+      registerLockableBlock("lockable_jungle_door", LockableDoorBlock::new, (DoorBlock) Blocks.JUNGLE_DOOR);
+  public static final Block LOCKABLE_ACACIA_DOOR =
+      registerLockableBlock("lockable_acacia_door", LockableDoorBlock::new, (DoorBlock) Blocks.ACACIA_DOOR);
+  public static final Block LOCKABLE_DARK_OAK_DOOR =
+      registerLockableBlock("lockable_dark_oak_door", LockableDoorBlock::new, (DoorBlock) Blocks.DARK_OAK_DOOR);
+  public static final Block LOCKABLE_CRIMSON_DOOR =
+      registerLockableBlock("lockable_crimson_door", LockableDoorBlock::new, (DoorBlock) Blocks.CRIMSON_DOOR);
+  public static final Block LOCKABLE_WARPED_DOOR =
+      registerLockableBlock("lockable_warped_door", LockableDoorBlock::new, (DoorBlock) Blocks.WARPED_DOOR);
+  public static final Block LOCKABLE_IRON_DOOR =
+      registerLockableBlock("lockable_iron_door", LockableDoorBlock::new, (DoorBlock) Blocks.IRON_DOOR);
   // Trapdoors
-  public static final Block OAK_TRAPDOOR_WITH_LOCK =
-      registerLockableBlock("oak_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.OAK_TRAPDOOR);
-  public static final Block BIRCH_TRAPDOOR_WITH_LOCK =
-      registerLockableBlock("birch_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.BIRCH_TRAPDOOR);
-  public static final Block SPRUCE_TRAPDOOR_WITH_LOCK =
-      registerLockableBlock("spruce_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.SPRUCE_TRAPDOOR);
-  public static final Block JUNGLE_TRAPDOOR_WITH_LOCK =
-      registerLockableBlock("jungle_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.JUNGLE_TRAPDOOR);
-  public static final Block ACACIA_TRAPDOOR_WITH_LOCK =
-      registerLockableBlock("acacia_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.ACACIA_TRAPDOOR);
-  public static final Block DARK_OAK_TRAPDOOR_WITH_LOCK =
-      registerLockableBlock("dark_oak_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.DARK_OAK_TRAPDOOR);
-  public static final Block CRIMSON_TRAPDOOR_WITH_LOCK =
-      registerLockableBlock("crimson_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.CRIMSON_TRAPDOOR);
-  public static final Block WARPED_TRAPDOOR_WITH_LOCK =
-      registerLockableBlock("warped_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.WARPED_TRAPDOOR);
-  public static final Block IRON_TRAPDOOR_WITH_LOCK =
-      registerLockableBlock("iron_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.IRON_TRAPDOOR);
+  public static final Block LOCKABLE_OAK_TRAPDOOR =
+      registerLockableBlock("lockable_oak_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.OAK_TRAPDOOR);
+  public static final Block LOCKABLE_BIRCH_TRAPDOOR =
+      registerLockableBlock("lockable_birch_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.BIRCH_TRAPDOOR);
+  public static final Block LOCKABLE_SPRUCE_TRAPDOOR =
+      registerLockableBlock("lockable_spruce_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.SPRUCE_TRAPDOOR);
+  public static final Block LOCKABLE_JUNGLE_TRAPDOOR =
+      registerLockableBlock("lockable_jungle_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.JUNGLE_TRAPDOOR);
+  public static final Block LOCKABLE_ACACIA_TRAPDOOR =
+      registerLockableBlock("lockable_acacia_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.ACACIA_TRAPDOOR);
+  public static final Block LOCKABLE_DARK_OAK_TRAPDOOR =
+      registerLockableBlock("lockable_dark_oak_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.DARK_OAK_TRAPDOOR);
+  public static final Block LOCKABLE_CRIMSON_TRAPDOOR =
+      registerLockableBlock("lockable_crimson_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.CRIMSON_TRAPDOOR);
+  public static final Block LOCKABLE_WARPED_TRAPDOOR =
+      registerLockableBlock("lockable_warped_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.WARPED_TRAPDOOR);
+  public static final Block LOCKABLE_IRON_TRAPDOOR =
+      registerLockableBlock("lockable_iron_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.IRON_TRAPDOOR);
   // Fence gates
-  public static final Block OAK_FENCE_GATE_WITH_LOCK =
-      registerLockableBlock("oak_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.OAK_FENCE_GATE);
-  public static final Block BIRCH_FENCE_GATE_WITH_LOCK =
-      registerLockableBlock("birch_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.BIRCH_FENCE_GATE);
-  public static final Block SPRUCE_FENCE_GATE_WITH_LOCK =
-      registerLockableBlock("spruce_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.SPRUCE_FENCE_GATE);
-  public static final Block JUNGLE_FENCE_GATE_WITH_LOCK =
-      registerLockableBlock("jungle_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.JUNGLE_FENCE_GATE);
-  public static final Block ACACIA_FENCE_GATE_WITH_LOCK =
-      registerLockableBlock("acacia_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.ACACIA_FENCE_GATE);
-  public static final Block DARK_OAK_FENCE_GATE_WITH_LOCK =
-      registerLockableBlock("dark_oak_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.DARK_OAK_FENCE_GATE);
-  public static final Block CRIMSON_FENCE_GATE_WITH_LOCK =
-      registerLockableBlock("crimson_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.CRIMSON_FENCE_GATE);
-  public static final Block WARPED_FENCE_GATE_WITH_LOCK =
-      registerLockableBlock("warped_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.WARPED_FENCE_GATE);
+  public static final Block LOCKABLE_OAK_FENCE_GATE =
+      registerLockableBlock("lockable_oak_fence_gate", LockableFenceGateBlock::new, (FenceGateBlock) Blocks.OAK_FENCE_GATE);
+  public static final Block LOCKABLE_BIRCH_FENCE_GATE =
+      registerLockableBlock("lockable_birch_fence_gate", LockableFenceGateBlock::new, (FenceGateBlock) Blocks.BIRCH_FENCE_GATE);
+  public static final Block LOCKABLE_SPRUCE_FENCE_GATE =
+      registerLockableBlock("lockable_spruce_fence_gate", LockableFenceGateBlock::new, (FenceGateBlock) Blocks.SPRUCE_FENCE_GATE);
+  public static final Block LOCKABLE_JUNGLE_FENCE_GATE =
+      registerLockableBlock("lockable_jungle_fence_gate", LockableFenceGateBlock::new, (FenceGateBlock) Blocks.JUNGLE_FENCE_GATE);
+  public static final Block LOCKABLE_ACACIA_FENCE_GATE =
+      registerLockableBlock("lockable_acacia_fence_gate", LockableFenceGateBlock::new, (FenceGateBlock) Blocks.ACACIA_FENCE_GATE);
+  public static final Block LOCKABLE_DARK_OAK_FENCE_GATE =
+      registerLockableBlock("lockable_dark_oak_fence_gate", LockableFenceGateBlock::new, (FenceGateBlock) Blocks.DARK_OAK_FENCE_GATE);
+  public static final Block LOCKABLE_CRIMSON_FENCE_GATE =
+      registerLockableBlock("lockable_crimson_fence_gate", LockableFenceGateBlock::new, (FenceGateBlock) Blocks.CRIMSON_FENCE_GATE);
+  public static final Block LOCKABLE_WARPED_FENCE_GATE =
+      registerLockableBlock("lockable_warped_fence_gate", LockableFenceGateBlock::new, (FenceGateBlock) Blocks.WARPED_FENCE_GATE);
 
   /**
    * Registers a lockable block and its item, and puts it in the given item group.
@@ -145,34 +145,34 @@ public final class ModBlocks {
    * Should be called on client only.
    */
   public static void registerRenderLayers() {
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OAK_DOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BIRCH_DOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPRUCE_DOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.JUNGLE_DOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ACACIA_DOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_OAK_DOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_DOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_DOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.IRON_DOOR_WITH_LOCK, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_OAK_DOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_BIRCH_DOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_SPRUCE_DOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_JUNGLE_DOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_ACACIA_DOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_DARK_OAK_DOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_CRIMSON_DOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_WARPED_DOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_IRON_DOOR, RenderLayer.getCutout());
 
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OAK_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BIRCH_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPRUCE_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.JUNGLE_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ACACIA_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_OAK_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.IRON_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_OAK_TRAPDOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_BIRCH_TRAPDOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_SPRUCE_TRAPDOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_JUNGLE_TRAPDOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_ACACIA_TRAPDOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_DARK_OAK_TRAPDOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_CRIMSON_TRAPDOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_WARPED_TRAPDOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_IRON_TRAPDOOR, RenderLayer.getCutout());
 
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OAK_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BIRCH_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPRUCE_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.JUNGLE_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ACACIA_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_OAK_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
-    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_OAK_FENCE_GATE, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_BIRCH_FENCE_GATE, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_SPRUCE_FENCE_GATE, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_JUNGLE_FENCE_GATE, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_ACACIA_FENCE_GATE, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_DARK_OAK_FENCE_GATE, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_CRIMSON_FENCE_GATE, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_WARPED_FENCE_GATE, RenderLayer.getCutout());
   }
 
   private ModBlocks() {

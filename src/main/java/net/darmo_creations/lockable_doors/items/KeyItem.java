@@ -1,6 +1,6 @@
 package net.darmo_creations.lockable_doors.items;
 
-import net.darmo_creations.lockable_doors.blocks.BlockWithLock;
+import net.darmo_creations.lockable_doors.blocks.LockableBlock;
 import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -54,7 +54,7 @@ public class KeyItem extends Item {
     if (player == null) {
       return ActionResult.FAIL;
     }
-    if (block instanceof BlockWithLock bwl) {
+    if (block instanceof LockableBlock bwl) {
       if (!bwl.hasLock(world, pos)) {
         this.notifyError(world, pos, player, "lockable_doors.message.no_lock");
         return ActionResult.FAIL;

@@ -1,6 +1,6 @@
 package net.darmo_creations.lockable_doors.items;
 
-import net.darmo_creations.lockable_doors.blocks.BlockWithLock;
+import net.darmo_creations.lockable_doors.blocks.LockableBlock;
 import net.darmo_creations.lockable_doors.lock_system.LockData;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -51,7 +51,7 @@ public class LockItem extends Item {
     }
     BlockState blockState = world.getBlockState(pos);
     Block block = blockState.getBlock();
-    if (block instanceof BlockWithLock bwl) {
+    if (block instanceof LockableBlock bwl) {
       if (bwl.hasLock(world, pos)) {
         this.notifyPlayer(player, "lockable_doors.message.lock_already_present");
         return ActionResult.FAIL;
