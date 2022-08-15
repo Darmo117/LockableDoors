@@ -23,7 +23,6 @@ public final class ModBlockEntities {
           ModBlocks.LOCKABLE_DARK_OAK_DOOR,
           ModBlocks.LOCKABLE_CRIMSON_DOOR,
           ModBlocks.LOCKABLE_WARPED_DOOR,
-          ModBlocks.LOCKABLE_IRON_DOOR,
 
           ModBlocks.LOCKABLE_OAK_TRAPDOOR,
           ModBlocks.LOCKABLE_BIRCH_TRAPDOOR,
@@ -33,7 +32,6 @@ public final class ModBlockEntities {
           ModBlocks.LOCKABLE_DARK_OAK_TRAPDOOR,
           ModBlocks.LOCKABLE_CRIMSON_TRAPDOOR,
           ModBlocks.LOCKABLE_WARPED_TRAPDOOR,
-          ModBlocks.LOCKABLE_IRON_TRAPDOOR,
 
           ModBlocks.LOCKABLE_OAK_FENCE_GATE,
           ModBlocks.LOCKABLE_BIRCH_FENCE_GATE,
