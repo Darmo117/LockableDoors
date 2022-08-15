@@ -14,7 +14,6 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.function.Function;
 
-// TODO flammability
 // TODO restrict locks to hand use only? -> remove iron door and trapdoor
 
 /**

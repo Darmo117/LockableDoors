@@ -1,11 +1,13 @@
 package net.darmo_creations.lockable_doors.items;
 
+import net.darmo_creations.lockable_doors.block_entities.BlockWithLockBlockEntity;
 import net.darmo_creations.lockable_doors.blocks.BlockWithLock;
 import net.darmo_creations.lockable_doors.lock_system.LockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -14,12 +16,13 @@ import net.minecraft.text.Style;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class LockRemoverItem extends Item {
   public LockRemoverItem(Settings settings) {
-    super(settings);
+    super(settings.maxDamage(400));
   }
 
   @Override
@@ -44,6 +47,12 @@ public class LockRemoverItem extends Item {
         if (!player.isCreative()) {
           context.getStack().damage(1, player, p -> p.sendToolBreakStatus(context.getHand()));
         }
+        ItemStack stack = new ItemStack(ModItems.LOCK);
+        BlockWithLockBlockEntity be = ((BlockWithLock) block).getBlockEntity(world, blockPos)
+            .orElseGet(() -> ((BlockWithLock) block).getBlockEntity(world, blockPos.down())
+                .orElseThrow(IllegalStateException::new));
+        ModItems.LOCK.setData(stack, be.getLockData());
+        ItemScatterer.spawn(world, blockPos.getX() + 0.5, blockPos.getY(), blockPos.getZ() + 0.5, stack);
         world.setBlockState(blockPos, baseBlock.getStateWithProperties(blockState));
         world.playSound(null, blockPos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1, 1);
       }
