@@ -21,6 +21,9 @@ import java.util.function.Function;
  * This class declares all blocks for this mod.
  */
 public final class ModBlocks {
+  public static final Block LOCKSMITHING_STATION =
+      register("locksmithing_station", new LocksmithingStationBlock(), true);
+
   // Doors
   public static final Block OAK_DOOR_WITH_LOCK =
       registerLockableBlock("oak_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.OAK_DOOR);

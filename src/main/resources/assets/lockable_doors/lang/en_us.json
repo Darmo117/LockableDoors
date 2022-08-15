@@ -1,6 +1,11 @@
 {
   "itemGroup.lockable_doors.item_group": "Lockable Doors",
 
+  "container.lockable_doors.locksmithing": "Locksmithing Station",
+  "container.lockable_doors.locksmithing.rename": "Rename",
+
+  "block.lockable_doors.locksmithing_station": "Locksmithing Station",
+
   "block.lockable_doors.oak_door_with_lock": "Oak Door with Lock",
   "block.lockable_doors.birch_door_with_lock": "Birch Door with Lock",
   "block.lockable_doors.spruce_door_with_lock": "Spruce Door with Lock",

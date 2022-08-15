@@ -2,7 +2,11 @@ package net.darmo_creations.lockable_doors;
 
 import net.darmo_creations.lockable_doors.block_entities.ModBlockEntities;
 import net.darmo_creations.lockable_doors.blocks.ModBlocks;
+import net.darmo_creations.lockable_doors.gui.ModScreenHandlers;
 import net.darmo_creations.lockable_doors.items.ModItems;
+import net.darmo_creations.lockable_doors.network.C2SPacketFactory;
+import net.darmo_creations.lockable_doors.network.PacketRegistry;
+import net.darmo_creations.lockable_doors.network.packets.RenameLockOrKeyPacket;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
@@ -26,5 +30,18 @@ public class LockableDoors implements ModInitializer {
     ModBlocks.init();
     ModBlockEntities.init();
     ModItems.init();
+    ModScreenHandlers.init();
+    this.registerServerPacketHandlers();
+  }
+
+  /**
+   * Registers all packets and associated handlers.
+   */
+  private void registerServerPacketHandlers() {
+    PacketRegistry.registerPacket(
+        C2SPacketFactory.RENAME_LOCK_OR_KEY_PACKET_ID,
+        RenameLockOrKeyPacket.class,
+        new RenameLockOrKeyPacket.ServerHandler()
+    );
   }
 }
