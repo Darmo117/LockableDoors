@@ -78,11 +78,11 @@ public final class ModBlocks {
    * @return The registered block.
    */
   private static <T extends Block, U extends Block> T registerLockableBlock(final String name, final Function<U, T> factory, final U baseBlock) {
-    T block = factory.apply(baseBlock);
-    register(name, block, false);
-    LockRegistry.add(baseBlock, block);
-    setFlammability(block, baseBlock);
-    return block;
+    T lockableBlock = factory.apply(baseBlock);
+    register(name, lockableBlock, false);
+    LockRegistry.add(baseBlock, lockableBlock);
+    setFlammability(lockableBlock, baseBlock);
+    return lockableBlock;
   }
 
   /**

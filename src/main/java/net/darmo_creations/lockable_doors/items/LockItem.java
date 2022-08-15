@@ -68,12 +68,13 @@ public class LockItem extends Item {
       context.getStack().damage(1, player, p -> p.sendToolBreakStatus(context.getHand()));
     }
     world.setBlockState(blockPos, lockableBlock.getStateWithProperties(blockState));
-    // FIXME error thrown
+    System.out.println(world.getBlockEntity(blockPos)); // DEBUG
+    // FIXME does not work with doors
     BlockWithLockBlockEntity be = ((BlockWithLock) lockableBlock).getBlockEntity(world, blockPos)
         .orElseThrow(IllegalStateException::new);
     be.setLockData(lockData.get());
     world.playSound(null, blockPos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1, 1);
-    return super.useOnBlock(context);
+    return ActionResult.SUCCESS;
   }
 
   public Optional<LockData> getData(final ItemStack stack) {

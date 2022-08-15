@@ -31,6 +31,7 @@ public class BlockWithLockBlockEntity extends BlockEntity {
 
   public void setLockData(final LockData lockData) {
     this.lockData = Objects.requireNonNull(lockData);
+    this.markDirty();
   }
 
   public boolean tryLock(final ItemStack itemStack) {
@@ -42,6 +43,7 @@ public class BlockWithLockBlockEntity extends BlockEntity {
       String k = key.get();
       if (this.lockData.keyFits(k)) {
         this.locked = true;
+        this.markDirty();
         return true;
       }
     }
@@ -57,6 +59,7 @@ public class BlockWithLockBlockEntity extends BlockEntity {
       String k = key.get();
       if (this.lockData.keyFits(k)) {
         this.locked = false;
+        this.markDirty();
         return true;
       }
     }

@@ -39,13 +39,15 @@ public class LockRemoverItem extends Item {
         return ActionResult.FAIL;
       }
       PlayerEntity player = context.getPlayer();
-      //noinspection ConstantConditions
-      if (!player.isCreative()) {
-        context.getStack().damage(1, player, p -> p.sendToolBreakStatus(context.getHand()));
+      if (!world.isClient()) {
+        //noinspection ConstantConditions
+        if (!player.isCreative()) {
+          context.getStack().damage(1, player, p -> p.sendToolBreakStatus(context.getHand()));
+        }
+        world.setBlockState(blockPos, baseBlock.getStateWithProperties(blockState));
+        world.playSound(null, blockPos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1, 1);
       }
-      world.setBlockState(blockPos, baseBlock.getStateWithProperties(blockState));
-      world.playSound(null, blockPos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1, 1);
-      return super.useOnBlock(context);
+      return ActionResult.SUCCESS;
     }
     return ActionResult.FAIL;
   }

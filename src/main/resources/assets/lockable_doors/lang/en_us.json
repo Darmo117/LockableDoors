@@ -40,6 +40,7 @@
   "lockable_doors.message.blank_lock": "Cannot install a blank lock!",
   "lockable_doors.message.lock_already_present": "A lock is already present!",
   "lockable_doors.message.wrong_key": "Wrong key!",
+  "lockable_doors.message.locked_block": "Block is locked!",
   "lockable_doors.message.successfully_locked": "Locked!",
   "lockable_doors.message.successfully_unlocked": "Unlocked!",
   "lockable_doors.message.cannot_remove_while_locked": "Cannot remove a lock while it is locked!"

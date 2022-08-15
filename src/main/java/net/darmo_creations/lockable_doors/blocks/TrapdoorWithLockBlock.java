@@ -17,8 +17,6 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-// TODO check waterloggability is not impacted when locked
-
 /**
  * A trapdoor block that can be locked.
  */

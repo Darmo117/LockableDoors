@@ -117,7 +117,7 @@ public interface BlockWithLock {
    */
   default void notifyLocked(World world, BlockPos pos, PlayerEntity player) {
     world.playSound(null, pos, SoundEvents.BLOCK_CHEST_LOCKED, SoundCategory.BLOCKS, 1, 1);
-    MutableText message = new TranslatableText("locked_doors.message.locked_block")
+    MutableText message = new TranslatableText("lockable_doors.message.locked_block")
         .setStyle(Style.EMPTY.withColor(Formatting.RED));
     player.sendMessage(message, true);
   }

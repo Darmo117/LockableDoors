@@ -90,13 +90,13 @@ public class KeyItem extends Item {
 
   protected void notifySuccess(World world, final BlockPos pos, PlayerEntity player, final boolean locked) {
     world.playSound(null, pos, SoundEvents.BLOCK_CHEST_LOCKED, SoundCategory.BLOCKS, 1, 1);
-    MutableText message = new TranslatableText("locked_doors.message.successfully_" + (locked ? "locked" : "unlocked"));
+    MutableText message = new TranslatableText("lockable_doors.message.successfully_" + (locked ? "locked" : "unlocked"));
     player.sendMessage(message, true);
   }
 
   protected void notifyWrongKey(World world, final BlockPos pos, PlayerEntity player) {
     world.playSound(null, pos, SoundEvents.BLOCK_CHEST_LOCKED, SoundCategory.BLOCKS, 1, 1);
-    MutableText message = new TranslatableText("locked_doors.message.wrong_key")
+    MutableText message = new TranslatableText("lockable_doors.message.wrong_key")
         .setStyle(Style.EMPTY.withColor(Formatting.RED));
     player.sendMessage(message, true);
   }

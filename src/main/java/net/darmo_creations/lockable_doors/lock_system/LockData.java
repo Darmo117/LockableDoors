@@ -2,7 +2,6 @@ package net.darmo_creations.lockable_doors.lock_system;
 
 import net.minecraft.nbt.NbtCompound;
 
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
@@ -17,7 +16,7 @@ public class LockData {
   }
 
   public LockData(final NbtCompound nbt) {
-    this(nbt.getString(HASH_KEY));
+    this.hash = nbt.getString(HASH_KEY);
   }
 
   public boolean keyFits(final String key) {
@@ -33,7 +32,11 @@ public class LockData {
     }
     md.update(key.getBytes());
     byte[] digest = md.digest();
-    return new String(digest, StandardCharsets.UTF_8);
+    StringBuilder sb = new StringBuilder();
+    for (byte b : digest) {
+      sb.append(String.format("%02x", b & 0xff));
+    }
+    return sb.toString();
   }
 
   public NbtCompound writeToNBT() {
