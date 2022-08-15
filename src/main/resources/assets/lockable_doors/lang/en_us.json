@@ -12,6 +12,8 @@
   "block.lockable_doors.jungle_door_with_lock": "Jungle Door with Lock",
   "block.lockable_doors.acacia_door_with_lock": "Acacia Door with Lock",
   "block.lockable_doors.dark_oak_door_with_lock": "Dark Oak Door with Lock",
+  "block.lockable_doors.crimson_door_with_lock": "Crimson Door with Lock",
+  "block.lockable_doors.warped_door_with_lock": "Warped Door with Lock",
   "block.lockable_doors.iron_door_with_lock": "Iron Door with Lock",
 
   "block.lockable_doors.oak_trapdoor_with_lock": "Oak Trapdoor with Lock",
@@ -20,6 +22,8 @@
   "block.lockable_doors.jungle_trapdoor_with_lock": "Jungle Trapdoor with Lock",
   "block.lockable_doors.acacia_trapdoor_with_lock": "Acacia Trapdoor with Lock",
   "block.lockable_doors.dark_oak_trapdoor_with_lock": "Dark Oak Trapdoor with Lock",
+  "block.lockable_doors.crimson_trapdoor_with_lock": "Crimson Trapdoor with Lock",
+  "block.lockable_doors.warped_trapdoor_with_lock": "Warped Trapdoor with Lock",
   "block.lockable_doors.iron_trapdoor_with_lock": "Iron Trapdoor with Lock",
 
   "block.lockable_doors.oak_fence_gate_with_lock": "Oak Fence Gate with Lock",
@@ -28,6 +32,8 @@
   "block.lockable_doors.jungle_fence_gate_with_lock": "Jungle Fence Gate with Lock",
   "block.lockable_doors.acacia_fence_gate_with_lock": "Acacia Fence Gate with Lock",
   "block.lockable_doors.dark_oak_fence_gate_with_lock": "Dark Oak Fence Gate with Lock",
+  "block.lockable_doors.crimson_fence_gate_with_lock": "Crimson Fence Gate with Lock",
+  "block.lockable_doors.warped_fence_gate_with_lock": "Warped Fence Gate with Lock",
 
   "item.lockable_doors.key": "Key",
   "item.lockable_doors.key.tooltip.blank": "Blank",

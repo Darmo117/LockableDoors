@@ -21,6 +21,8 @@ public final class ModBlockEntities {
           ModBlocks.JUNGLE_DOOR_WITH_LOCK,
           ModBlocks.ACACIA_DOOR_WITH_LOCK,
           ModBlocks.DARK_OAK_DOOR_WITH_LOCK,
+          ModBlocks.CRIMSON_DOOR_WITH_LOCK,
+          ModBlocks.WARPED_DOOR_WITH_LOCK,
           ModBlocks.IRON_DOOR_WITH_LOCK,
 
           ModBlocks.OAK_TRAPDOOR_WITH_LOCK,
@@ -29,6 +31,8 @@ public final class ModBlockEntities {
           ModBlocks.JUNGLE_TRAPDOOR_WITH_LOCK,
           ModBlocks.ACACIA_TRAPDOOR_WITH_LOCK,
           ModBlocks.DARK_OAK_TRAPDOOR_WITH_LOCK,
+          ModBlocks.CRIMSON_TRAPDOOR_WITH_LOCK,
+          ModBlocks.WARPED_TRAPDOOR_WITH_LOCK,
           ModBlocks.IRON_TRAPDOOR_WITH_LOCK,
 
           ModBlocks.OAK_FENCE_GATE_WITH_LOCK,
@@ -36,7 +40,9 @@ public final class ModBlockEntities {
           ModBlocks.SPRUCE_FENCE_GATE_WITH_LOCK,
           ModBlocks.JUNGLE_FENCE_GATE_WITH_LOCK,
           ModBlocks.ACACIA_FENCE_GATE_WITH_LOCK,
-          ModBlocks.DARK_OAK_FENCE_GATE_WITH_LOCK
+          ModBlocks.DARK_OAK_FENCE_GATE_WITH_LOCK,
+          ModBlocks.CRIMSON_FENCE_GATE_WITH_LOCK,
+          ModBlocks.WARPED_FENCE_GATE_WITH_LOCK
       );
 
   /**

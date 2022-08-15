@@ -35,6 +35,10 @@ public final class ModBlocks {
       registerLockableBlock("acacia_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.ACACIA_DOOR);
   public static final Block DARK_OAK_DOOR_WITH_LOCK =
       registerLockableBlock("dark_oak_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.DARK_OAK_DOOR);
+  public static final Block CRIMSON_DOOR_WITH_LOCK =
+      registerLockableBlock("crimson_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.CRIMSON_DOOR);
+  public static final Block WARPED_DOOR_WITH_LOCK =
+      registerLockableBlock("warped_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.WARPED_DOOR);
   public static final Block IRON_DOOR_WITH_LOCK =
       registerLockableBlock("iron_door_with_lock", DoorWithLockBlock::new, (DoorBlock) Blocks.IRON_DOOR);
   // Trapdoors
@@ -50,6 +54,10 @@ public final class ModBlocks {
       registerLockableBlock("acacia_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.ACACIA_TRAPDOOR);
   public static final Block DARK_OAK_TRAPDOOR_WITH_LOCK =
       registerLockableBlock("dark_oak_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.DARK_OAK_TRAPDOOR);
+  public static final Block CRIMSON_TRAPDOOR_WITH_LOCK =
+      registerLockableBlock("crimson_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.CRIMSON_TRAPDOOR);
+  public static final Block WARPED_TRAPDOOR_WITH_LOCK =
+      registerLockableBlock("warped_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.WARPED_TRAPDOOR);
   public static final Block IRON_TRAPDOOR_WITH_LOCK =
       registerLockableBlock("iron_trapdoor_with_lock", TrapdoorWithLockBlock::new, (TrapdoorBlock) Blocks.IRON_TRAPDOOR);
   // Fence gates
@@ -65,6 +73,10 @@ public final class ModBlocks {
       registerLockableBlock("acacia_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.ACACIA_FENCE_GATE);
   public static final Block DARK_OAK_FENCE_GATE_WITH_LOCK =
       registerLockableBlock("dark_oak_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.DARK_OAK_FENCE_GATE);
+  public static final Block CRIMSON_FENCE_GATE_WITH_LOCK =
+      registerLockableBlock("crimson_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.CRIMSON_FENCE_GATE);
+  public static final Block WARPED_FENCE_GATE_WITH_LOCK =
+      registerLockableBlock("warped_fence_gate_with_lock", FenceGateWithLockBlock::new, (FenceGateBlock) Blocks.WARPED_FENCE_GATE);
 
   /**
    * Registers a lockable block and its item, and puts it in the given item group.
@@ -139,6 +151,8 @@ public final class ModBlocks {
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.JUNGLE_DOOR_WITH_LOCK, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ACACIA_DOOR_WITH_LOCK, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_OAK_DOOR_WITH_LOCK, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_DOOR_WITH_LOCK, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_DOOR_WITH_LOCK, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.IRON_DOOR_WITH_LOCK, RenderLayer.getCutout());
 
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OAK_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
@@ -147,6 +161,8 @@ public final class ModBlocks {
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.JUNGLE_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ACACIA_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_OAK_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.IRON_TRAPDOOR_WITH_LOCK, RenderLayer.getCutout());
 
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OAK_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
@@ -155,6 +171,8 @@ public final class ModBlocks {
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.JUNGLE_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ACACIA_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DARK_OAK_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRIMSON_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WARPED_FENCE_GATE_WITH_LOCK, RenderLayer.getCutout());
   }
 
   private ModBlocks() {
