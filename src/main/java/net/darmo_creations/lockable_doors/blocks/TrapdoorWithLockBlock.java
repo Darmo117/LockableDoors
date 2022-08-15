@@ -23,8 +23,8 @@ import java.util.List;
  * A trapdoor block that can be locked.
  */
 public class TrapdoorWithLockBlock extends TrapdoorBlock implements BlockWithLock, BlockEntityProvider {
-  public TrapdoorWithLockBlock(Settings settings) {
-    super(settings);
+  public TrapdoorWithLockBlock(final TrapdoorBlock baseBlock) {
+    super(Settings.copy(baseBlock));
   }
 
   @SuppressWarnings("deprecation")

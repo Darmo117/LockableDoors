@@ -24,8 +24,8 @@ import java.util.List;
  * A door block that can be locked.
  */
 public class DoorWithLockBlock extends DoorBlock implements BlockWithLock, BlockEntityProvider {
-  public DoorWithLockBlock(Settings settings) {
-    super(settings);
+  public DoorWithLockBlock(final DoorBlock baseBlock) {
+    super(Settings.copy(baseBlock));
   }
 
   @SuppressWarnings("deprecation")

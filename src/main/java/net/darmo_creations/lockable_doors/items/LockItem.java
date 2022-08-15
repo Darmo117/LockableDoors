@@ -13,6 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -52,23 +54,25 @@ public class LockItem extends Item {
     BlockState blockState = world.getBlockState(blockPos);
     Block block = blockState.getBlock();
     if (block instanceof BlockWithLock) {
-      this.notifyPlayer(player, "locked_doors.message.lock_already_present");
+      this.notifyPlayer(player, "lockable_doors.message.lock_already_present");
     }
     Block lockableBlock = LockRegistry.getLockableBlock(block);
     if (lockableBlock == null) {
       return ActionResult.FAIL;
     }
     if (lockData.isEmpty()) {
-      this.notifyPlayer(player, "locked_doors.message.blank_lock");
+      this.notifyPlayer(player, "lockable_doors.message.blank_lock");
       return ActionResult.FAIL;
     }
     if (!player.isCreative()) {
       context.getStack().damage(1, player, p -> p.sendToolBreakStatus(context.getHand()));
     }
     world.setBlockState(blockPos, lockableBlock.getStateWithProperties(blockState));
+    // FIXME error thrown
     BlockWithLockBlockEntity be = ((BlockWithLock) lockableBlock).getBlockEntity(world, blockPos)
         .orElseThrow(IllegalStateException::new);
     be.setLockData(lockData.get());
+    world.playSound(null, blockPos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1, 1);
     return super.useOnBlock(context);
   }
 

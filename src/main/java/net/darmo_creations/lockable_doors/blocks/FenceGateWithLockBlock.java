@@ -21,8 +21,8 @@ import java.util.List;
  * A fence gate block that can be locked.
  */
 public class FenceGateWithLockBlock extends FenceGateBlock implements BlockWithLock, BlockEntityProvider {
-  public FenceGateWithLockBlock(Settings settings) {
-    super(settings);
+  public FenceGateWithLockBlock(final FenceGateBlock baseBlock) {
+    super(Settings.copy(baseBlock));
   }
 
   @SuppressWarnings("deprecation")
