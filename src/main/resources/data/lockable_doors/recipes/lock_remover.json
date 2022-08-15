@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  N",
+    " N ",
+    "S"
+  ],
+  "key": {
+    "N": {
+      "tag": "minecraft:iron_nugget"
+    },
+    "S": {
+      "tag": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "lockable_doors:lock_remover",
+    "count": 1
+  }
+}

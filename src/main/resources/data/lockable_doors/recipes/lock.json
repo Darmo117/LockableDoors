@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "NCN",
+    " I "
+  ],
+  "key": {
+    "I": {
+      "tag": "minecraft:iron_ingot"
+    },
+    "N": {
+      "tag": "minecraft:iron_nugget"
+    },
+    "C": {
+      "tag": "minecraft:copper_nugget"
+    }
+  },
+  "result": {
+    "item": "lockable_doors:lock",
+    "count": 2
+  }
+}
