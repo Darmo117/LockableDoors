@@ -24,6 +24,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * This item is used to lock/unlock a {@link LockableBlock} equipped with a lock.
+ */
 public class KeyItem extends Item {
   private static final String KEY_DATA_KEY = "KeyData";
 
@@ -56,7 +59,7 @@ public class KeyItem extends Item {
     }
     if (block instanceof LockableBlock bwl) {
       if (!bwl.hasLock(world, pos)) {
-        this.notifyError(world, pos, player, "lockable_doors.message.no_lock");
+        this.notifyErrorToPlayer(world, pos, player, "lockable_doors.message.no_lock");
         return ActionResult.FAIL;
       }
       ItemStack stack = context.getStack();
@@ -68,15 +71,21 @@ public class KeyItem extends Item {
         ok = bwl.tryLock(world, pos, stack);
       }
       if (ok) {
-        this.notifySuccess(world, pos, player, !wasLocked);
+        this.notifySuccessToPlayer(world, pos, player, !wasLocked);
         return ActionResult.SUCCESS;
       } else {
-        this.notifyError(world, pos, player, "lockable_doors.message.wrong_key");
+        this.notifyErrorToPlayer(world, pos, player, "lockable_doors.message.wrong_key");
       }
     }
     return ActionResult.FAIL;
   }
 
+  /**
+   * Returns the key data from the given stack.
+   *
+   * @param stack The stack.
+   * @return The key’s data or an empty value if the stack does not contain any valid data.
+   */
   public Optional<String> getData(final ItemStack stack) {
     NbtCompound nbt = stack.getNbt();
     if (nbt != null && nbt.contains(KEY_DATA_KEY, NbtElement.STRING_TYPE)) {
@@ -85,6 +94,12 @@ public class KeyItem extends Item {
     return Optional.empty();
   }
 
+  /**
+   * Insters the given key data into a stack.
+   *
+   * @param stack The stack.
+   * @param data  The data to insert.
+   */
   public void setData(ItemStack stack, final String data) {
     if (stack.getItem() != this) {
       return;
@@ -95,13 +110,29 @@ public class KeyItem extends Item {
     stack.setNbt(nbt);
   }
 
-  protected void notifySuccess(World world, final BlockPos pos, PlayerEntity player, final boolean locked) {
+  /**
+   * Notifies the given player the block has been locked/unlocked and plays a sound effect.
+   *
+   * @param world  The world.
+   * @param pos    The block’s position.
+   * @param player The player to notify.
+   * @param locked Whether the block was just locked or not.
+   */
+  protected void notifySuccessToPlayer(World world, final BlockPos pos, PlayerEntity player, final boolean locked) {
     world.playSound(null, pos, SoundEvents.BLOCK_CHEST_LOCKED, SoundCategory.BLOCKS, 1, 1);
     MutableText message = new TranslatableText("lockable_doors.message.successfully_" + (locked ? "locked" : "unlocked"));
     player.sendMessage(message, true);
   }
 
-  protected void notifyError(World world, final BlockPos pos, PlayerEntity player, final String message) {
+  /**
+   * Notifies the given player an error has occured and plays a sound effect.
+   *
+   * @param world   The world.
+   * @param pos     The block’s position.
+   * @param player  The player to notify.
+   * @param message The message’s translation key.
+   */
+  protected void notifyErrorToPlayer(World world, final BlockPos pos, PlayerEntity player, final String message) {
     world.playSound(null, pos, SoundEvents.BLOCK_CHEST_LOCKED, SoundCategory.BLOCKS, 1, 1);
     player.sendMessage(new TranslatableText(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
   }

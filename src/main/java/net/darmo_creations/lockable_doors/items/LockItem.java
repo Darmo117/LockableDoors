@@ -25,6 +25,9 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * This item can be applied to a {@link LockableBlock} to enable players to lock/unlock it.
+ */
 public class LockItem extends Item {
   private static final String LOCK_DATA_KEY = "LockData";
 
@@ -53,11 +56,11 @@ public class LockItem extends Item {
     Block block = blockState.getBlock();
     if (block instanceof LockableBlock bwl) {
       if (bwl.hasLock(world, pos)) {
-        this.notifyPlayer(player, "lockable_doors.message.lock_already_present");
+        this.notifyErrorToPlayer(player, "lockable_doors.message.lock_already_present");
         return ActionResult.FAIL;
       }
       if (lockData.isEmpty()) {
-        this.notifyPlayer(player, "lockable_doors.message.blank_lock");
+        this.notifyErrorToPlayer(player, "lockable_doors.message.blank_lock");
         return ActionResult.FAIL;
       }
       if (bwl.tryInstallLock(world, pos, lockData.get())) {
@@ -71,6 +74,12 @@ public class LockItem extends Item {
     return ActionResult.FAIL;
   }
 
+  /**
+   * Returns the lock data from the given stack.
+   *
+   * @param stack The stack.
+   * @return The lock’s data or an empty value if the stack does not contain any valid data.
+   */
   public Optional<LockData> getData(final ItemStack stack) {
     NbtCompound nbt = stack.getNbt();
     if (nbt != null && nbt.contains(LOCK_DATA_KEY, NbtElement.COMPOUND_TYPE)) {
@@ -79,6 +88,12 @@ public class LockItem extends Item {
     return Optional.empty();
   }
 
+  /**
+   * Insters the given lock data into a stack.
+   *
+   * @param stack The stack.
+   * @param data  The data to insert.
+   */
   public void setData(ItemStack stack, final LockData data) {
     if (stack.getItem() != this) {
       return;
@@ -92,8 +107,13 @@ public class LockItem extends Item {
     }
   }
 
-  protected void notifyPlayer(PlayerEntity player, final String s) {
-    MutableText message = new TranslatableText(s).setStyle(Style.EMPTY.withColor(Formatting.RED));
-    player.sendMessage(message, true);
+  /**
+   * Notifies the given player an error has occured.
+   *
+   * @param player  The player to notify.
+   * @param message The message’s translation key.
+   */
+  protected void notifyErrorToPlayer(PlayerEntity player, final String message) {
+    player.sendMessage(new TranslatableText(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
   }
 }

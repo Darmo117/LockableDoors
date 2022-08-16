@@ -20,6 +20,9 @@ import net.minecraft.world.World;
 
 import java.util.Optional;
 
+/**
+ * This item is used to remove locks from {@link LockableBlock}s.
+ */
 public class LockRemoverItem extends Item {
   public LockRemoverItem(Settings settings) {
     super(settings);
@@ -37,11 +40,11 @@ public class LockRemoverItem extends Item {
     }
     if (block instanceof LockableBlock bwl) {
       if (!bwl.hasLock(world, pos)) {
-        this.notifyPlayer(player, "lockable_doors.message.no_lock");
+        this.notifyErrorToPlayer(player, "lockable_doors.message.no_lock");
         return ActionResult.FAIL;
       }
       if (bwl.isLocked(world, pos)) {
-        this.notifyPlayer(context.getPlayer(), "lockable_doors.message.cannot_remove_while_locked");
+        this.notifyErrorToPlayer(context.getPlayer(), "lockable_doors.message.cannot_remove_while_locked");
         return ActionResult.FAIL;
       }
       if (!player.isCreative()) {
@@ -59,7 +62,13 @@ public class LockRemoverItem extends Item {
     return ActionResult.FAIL;
   }
 
-  protected void notifyPlayer(PlayerEntity player, final String message) {
+  /**
+   * Notifies the given player an error has occured.
+   *
+   * @param player  The player to notify.
+   * @param message The message’s translation key.
+   */
+  protected void notifyErrorToPlayer(PlayerEntity player, final String message) {
     player.sendMessage(new TranslatableText(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
   }
 }

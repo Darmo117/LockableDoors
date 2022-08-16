@@ -18,6 +18,9 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+/**
+ * The locksmithing station is used to prepare keys and locks.
+ */
 public class LocksmithingStationBlock extends Block {
   private static final Text TITLE = new TranslatableText("container.lockable_doors.locksmithing");
 
