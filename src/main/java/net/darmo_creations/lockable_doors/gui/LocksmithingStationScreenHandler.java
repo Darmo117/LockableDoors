@@ -64,6 +64,14 @@ public class LocksmithingStationScreenHandler extends ScreenHandler {
       }
 
       @Override
+      public boolean canTakeItems(PlayerEntity playerEntity) {
+        ItemStack inputStack = LocksmithingStationScreenHandler.this.input.getStack(0);
+        Item item = inputStack.getItem();
+        return LocksmithingStationScreenHandler.this.data != null
+            && ((item instanceof KeyItem key && key.getData(inputStack).isEmpty()) || item instanceof LockItem);
+      }
+
+      @Override
       public void onTakeItem(PlayerEntity player, ItemStack stack) {
         super.onTakeItem(player, stack);
         LocksmithingStationScreenHandler.this.onTakeOutput(stack);

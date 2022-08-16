@@ -84,6 +84,9 @@ public class LocksmithingStationScreen
     int j = (this.height - this.backgroundHeight) / 2;
     // Draw full GUI
     this.drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
+    if (!this.handler.getSlot(1).canTakeItems(this.handler.player)) {
+      this.drawTexture(matrices, i + 79, j + 48, 176, 0, 18, 21);
+    }
     // Draw text field background part
     this.drawTexture(matrices, i + 59, j + 20, 0, this.backgroundHeight + (this.handler.getSlot(0).hasStack() ? 0 : 16), 110, 16);
   }
