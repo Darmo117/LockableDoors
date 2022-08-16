@@ -10,6 +10,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.network.Packet;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.Optional;
@@ -64,6 +67,8 @@ public class LockableBlockEntity extends BlockEntity {
       String k = key.get();
       if (this.lockData.keyFits(k)) {
         this.locked = true;
+        //noinspection ConstantConditions
+        this.world.updateListeners(this.pos, this.getWorld().getBlockState(this.pos), this.getWorld().getBlockState(this.pos), Block.NOTIFY_LISTENERS);
         this.markDirty();
         return true;
       }
@@ -80,6 +85,8 @@ public class LockableBlockEntity extends BlockEntity {
       String k = key.get();
       if (this.lockData.keyFits(k)) {
         this.locked = false;
+        //noinspection ConstantConditions
+        this.world.updateListeners(this.pos, this.getWorld().getBlockState(this.pos), this.getWorld().getBlockState(this.pos), Block.NOTIFY_LISTENERS);
         this.markDirty();
         return true;
       }
@@ -125,6 +132,18 @@ public class LockableBlockEntity extends BlockEntity {
     Block block = blockState.getBlock();
     if (block instanceof LockableBlock bwl && blockState.getProperties().contains(LockableBlock.HAS_LOCK)) {
       bwl.setHasLockProperty(this.getWorld(), this.pos, blockState, this.hasLock());
+      //noinspection ConstantConditions
+      this.world.updateListeners(this.pos, blockState, blockState, Block.NOTIFY_LISTENERS);
     }
+  }
+
+  @Override
+  public Packet<ClientPlayPacketListener> toUpdatePacket() {
+    return BlockEntityUpdateS2CPacket.create(this);
+  }
+
+  @Override
+  public NbtCompound toInitialChunkDataNbt() {
+    return this.createNbt();
   }
 }
