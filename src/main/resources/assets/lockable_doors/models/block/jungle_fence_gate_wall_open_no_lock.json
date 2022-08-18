@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/template_fence_gate_wall_open",
+  "parent": "lockable_doors:block/template_lockable_fence_gate_wall_open",
   "textures": {
-    "texture": "minecraft:block/jungle_planks"
+    "texture": "lockable_doors:block/jungle_fence_gate_no_lock"
   }
 }
