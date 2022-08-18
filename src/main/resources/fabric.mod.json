@@ -4,12 +4,12 @@
   "version": "${version}",
 
   "name": "Lockable Doors",
-  "description": "A simple mod that enables locking any door, trapdoor or fence gate.",
+  "description": "A simple mod that enables locking any vanilla wooden door, trapdoor or fence gate.",
   "authors": [
     "Darmo"
   ],
   "contact": {
-    "homepage": "https://github.com/Darmo117/lockable-doors",
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/lockable-doors",
     "sources": "https://github.com/FabricMC/lockable-doors"
   },
 
