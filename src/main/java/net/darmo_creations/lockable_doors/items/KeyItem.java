@@ -1,6 +1,7 @@
 package net.darmo_creations.lockable_doors.items;
 
 import net.darmo_creations.lockable_doors.blocks.LockableBlock;
+import net.darmo_creations.lockable_doors.lock_system.LockData;
 import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,6 +18,8 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -46,6 +49,17 @@ public class KeyItem extends Item {
           .setStyle(Style.EMPTY.withColor(Formatting.GREEN));
     }
     tooltip.add(text);
+  }
+
+  @Override
+  public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+    ItemStack thisStack = user.getStackInHand(hand);
+    ItemStack otherStack = user.getStackInHand(hand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND);
+    if (otherStack.isOf(ModItems.LOCK)) {
+      checkKeyAndLockFit(thisStack, otherStack, user);
+      return new TypedActionResult<>(ActionResult.PASS, thisStack);
+    }
+    return new TypedActionResult<>(ActionResult.FAIL, thisStack);
   }
 
   @Override
@@ -132,5 +146,29 @@ public class KeyItem extends Item {
    */
   protected void notifyErrorToPlayer(PlayerEntity player, final String message) {
     player.sendMessage(new TranslatableText(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
+  }
+
+  /**
+   * Checks whether the given key and lock fit. Displays a message in the action bar.
+   *
+   * @param keyStack  The key’s item stack.
+   * @param lockStack The lock’s item stack.
+   * @param player    The player holding both stacks.
+   */
+  public static void checkKeyAndLockFit(final ItemStack keyStack, final ItemStack lockStack, PlayerEntity player) {
+    if (lockStack.isOf(ModItems.LOCK) && keyStack.isOf(ModItems.KEY)) {
+      Optional<LockData> lockData = ModItems.LOCK.getData(lockStack);
+      Optional<String> keyData = ModItems.KEY.getData(keyStack);
+      boolean keyFits = keyData.isPresent() && lockData.isPresent() && lockData.get().keyFits(keyData.get());
+      MutableText message;
+      if (keyFits) {
+        message = new TranslatableText("lockable_doors.message.key_fits_lock")
+            .setStyle(Style.EMPTY.withColor(Formatting.GREEN));
+      } else {
+        message = new TranslatableText("lockable_doors.message.key_does_not_fit_lock")
+            .setStyle(Style.EMPTY.withColor(Formatting.RED));
+      }
+      player.sendMessage(message, true);
+    }
   }
 }

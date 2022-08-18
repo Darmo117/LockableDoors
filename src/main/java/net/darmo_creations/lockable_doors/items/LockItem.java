@@ -19,6 +19,8 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -41,6 +43,17 @@ public class LockItem extends Item {
     MutableText text = new TranslatableText("item.lockable_doors.lock.tooltip." + (keyed ? "keyed" : "blank"));
     text.setStyle(Style.EMPTY.withColor(keyed ? Formatting.GREEN : Formatting.GRAY));
     tooltip.add(text);
+  }
+
+  @Override
+  public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+    ItemStack thisStack = user.getStackInHand(hand);
+    ItemStack otherStack = user.getStackInHand(hand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND);
+    if (otherStack.isOf(ModItems.KEY)) {
+      KeyItem.checkKeyAndLockFit(otherStack, thisStack, user);
+      return new TypedActionResult<>(ActionResult.PASS, thisStack);
+    }
+    return new TypedActionResult<>(ActionResult.FAIL, thisStack);
   }
 
   @Override

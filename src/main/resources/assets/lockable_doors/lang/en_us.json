@@ -49,5 +49,7 @@
   "lockable_doors.message.locked_block": "Block is locked!",
   "lockable_doors.message.successfully_locked": "Locked!",
   "lockable_doors.message.successfully_unlocked": "Unlocked!",
-  "lockable_doors.message.cannot_remove_while_locked": "Cannot remove a lock while it is locked!"
+  "lockable_doors.message.cannot_remove_while_locked": "Cannot remove a lock while it is locked!",
+  "lockable_doors.message.key_fits_lock": "The key fits in the lock",
+  "lockable_doors.message.key_does_not_fit_lock": "The key does’t fit in the lock"
 }
