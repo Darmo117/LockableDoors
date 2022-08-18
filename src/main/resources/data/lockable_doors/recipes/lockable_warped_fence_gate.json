@@ -5,10 +5,10 @@
       "item": "minecraft:warped_fence_gate"
     },
     {
-      "item": "lockable_fence_gates:lock_housing"
+      "item": "lockable_doors:lock_housing"
     }
   ],
   "result": {
-    "item": "lockable_fence_gates:lockable_warped_fence_gate"
+    "item": "lockable_doors:lockable_warped_fence_gate"
   }
 }

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "lockable_doors:block/locksmithing_station"
+    }
+  }
+}

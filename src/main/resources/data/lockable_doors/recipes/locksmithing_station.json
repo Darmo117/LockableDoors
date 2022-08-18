@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:crafting_table"
+    },
+    {
+      "item": "lockable_doors:key"
+    }
+  ],
+  "result": {
+    "item": "lockable_doors:locksmithing_station"
+  }
+}

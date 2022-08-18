@@ -5,10 +5,10 @@
       "item": "minecraft:acacia_trapdoor"
     },
     {
-      "item": "lockable_trapdoors:lock_housing"
+      "item": "lockable_doors:lock_housing"
     }
   ],
   "result": {
-    "item": "lockable_trapdoors:lockable_acacia_trapdoor"
+    "item": "lockable_doors:lockable_acacia_trapdoor"
   }
 }

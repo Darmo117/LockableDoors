@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "lockable_doors:block/locksmithing_station_front",
+    "north": "lockable_doors:block/locksmithing_station_front",
+    "south": "lockable_doors:block/locksmithing_station_side",
+    "east": "lockable_doors:block/locksmithing_station_side",
+    "west": "lockable_doors:block/locksmithing_station_front",
+    "up": "lockable_doors:block/locksmithing_station_top",
+    "down": "minecraft:block/oak_planks"
+  }
+}

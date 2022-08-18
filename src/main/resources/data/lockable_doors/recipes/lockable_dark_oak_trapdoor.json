@@ -5,10 +5,10 @@
       "item": "minecraft:dark_oak_trapdoor"
     },
     {
-      "item": "lockable_trapdoors:lock_housing"
+      "item": "lockable_doors:lock_housing"
     }
   ],
   "result": {
-    "item": "lockable_trapdoors:lockable_dark_oak_trapdoor"
+    "item": "lockable_doors:lockable_dark_oak_trapdoor"
   }
 }

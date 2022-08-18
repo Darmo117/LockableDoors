@@ -5,10 +5,10 @@
       "item": "minecraft:jungle_trapdoor"
     },
     {
-      "item": "lockable_trapdoors:lock_housing"
+      "item": "lockable_doors:lock_housing"
     }
   ],
   "result": {
-    "item": "lockable_trapdoors:lockable_jungle_trapdoor"
+    "item": "lockable_doors:lockable_jungle_trapdoor"
   }
 }
