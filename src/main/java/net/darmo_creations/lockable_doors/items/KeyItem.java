@@ -49,6 +49,7 @@ public class KeyItem extends Item {
           .setStyle(Style.EMPTY.withColor(Formatting.GREEN));
     }
     tooltip.add(text);
+    super.appendTooltip(stack, world, tooltip, context);
   }
 
   @Override

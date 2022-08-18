@@ -40,6 +40,7 @@
   "item.lockable_doors.lock.tooltip.blank": "Blank",
   "item.lockable_doors.lock.tooltip.keyed": "Keyed",
   "item.lockable_doors.lock_remover": "Lock Remover",
+  "item.lockable_doors.lock_remover.tooltip": "Used to remove an installed lock.",
   "item.lockable_doors.lock_housing": "Lock Housing",
 
   "lockable_doors.message.blank_lock": "Cannot install a blank lock!",

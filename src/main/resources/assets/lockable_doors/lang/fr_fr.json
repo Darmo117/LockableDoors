@@ -1,0 +1,56 @@
+{
+  "itemGroup.lockable_doors.item_group": "Lockable Doors",
+
+  "container.lockable_doors.locksmithing": "Établi de serrurerie",
+  "container.lockable_doors.locksmithing.rename": "Renommer",
+
+  "block.lockable_doors.locksmithing_station": "Établi de serrurerie",
+
+  "block.lockable_doors.lockable_oak_door": "Porte verrouillable en chêne",
+  "block.lockable_doors.lockable_birch_door": "Porte verrouillable en bouleau",
+  "block.lockable_doors.lockable_spruce_door": "Porte verrouillable en sapin",
+  "block.lockable_doors.lockable_jungle_door": "Porte verrouillable en acajou",
+  "block.lockable_doors.lockable_acacia_door": "Porte verrouillable en acacia",
+  "block.lockable_doors.lockable_dark_oak_door": "Porte verrouillable en chêne noir",
+  "block.lockable_doors.lockable_crimson_door": "Porte verrouillable carmin",
+  "block.lockable_doors.lockable_warped_door": "Porte verrouillable biscornue",
+
+  "block.lockable_doors.lockable_oak_trapdoor": "Trappe verrouillable en chêne",
+  "block.lockable_doors.lockable_birch_trapdoor": "Trappe verrouillable en bouleau",
+  "block.lockable_doors.lockable_spruce_trapdoor": "Trappe verrouillable en sapin",
+  "block.lockable_doors.lockable_jungle_trapdoor": "Trappe verrouillable en acajou",
+  "block.lockable_doors.lockable_acacia_trapdoor": "Trappe verrouillable en acacia",
+  "block.lockable_doors.lockable_dark_oak_trapdoor": "Trappe verrouillable en chêne noir",
+  "block.lockable_doors.lockable_crimson_trapdoor": "Trappe verrouillable carmin",
+  "block.lockable_doors.lockable_warped_trapdoor": "Trappe verrouillable biscornue",
+
+  "block.lockable_doors.lockable_oak_fence_gate": "Portillon verrouillable en chêne",
+  "block.lockable_doors.lockable_birch_fence_gate": "Portillon verrouillable en bouleau",
+  "block.lockable_doors.lockable_spruce_fence_gate": "Portillon verrouillable en sapin",
+  "block.lockable_doors.lockable_jungle_fence_gate": "Portillon verrouillable en acajou",
+  "block.lockable_doors.lockable_acacia_fence_gate": "Portillon verrouillable en acacia",
+  "block.lockable_doors.lockable_dark_oak_fence_gate": "Portillon verrouillable en chêne noir",
+  "block.lockable_doors.lockable_crimson_fence_gate": "Portillon verrouillable carmin",
+  "block.lockable_doors.lockable_warped_fence_gate": "Portillon verrouillable biscornu",
+
+  "item.lockable_doors.key": "Clé",
+  "item.lockable_doors.key.tooltip.blank": "Vierge",
+  "item.lockable_doors.key.tooltip.name": "Nom : %s",
+  "item.lockable_doors.lock": "Serrure",
+  "item.lockable_doors.lock.tooltip.blank": "Vierge",
+  "item.lockable_doors.lock.tooltip.keyed": "Usinée",
+  "item.lockable_doors.lock_remover": "Tournevis",
+  "item.lockable_doors.lock_remover.tooltip": "Permet de retirer une serrure.",
+  "item.lockable_doors.lock_housing": "Chambre de serrure",
+
+  "lockable_doors.message.blank_lock": "Impossible d’installer une serrure vierge !",
+  "lockable_doors.message.lock_already_present": "Une serrure est déjà installée !",
+  "lockable_doors.message.no_lock": "Aucune serrure n’est installée !",
+  "lockable_doors.message.wrong_key": "Mauvaise clé !",
+  "lockable_doors.message.locked_block": "Le bloc est verrouillé !",
+  "lockable_doors.message.successfully_locked": "Verrouillé !",
+  "lockable_doors.message.successfully_unlocked": "Déverrouillé !",
+  "lockable_doors.message.cannot_remove_while_locked": "Impossible de démonter une serrure verrouillée !",
+  "lockable_doors.message.key_fits_lock": "La clé rentre dans la serrure",
+  "lockable_doors.message.key_does_not_fit_lock": "La clé ne rentre pas dans la serrure"
+}

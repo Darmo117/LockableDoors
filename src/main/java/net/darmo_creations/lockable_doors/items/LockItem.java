@@ -43,6 +43,7 @@ public class LockItem extends Item {
     MutableText text = new TranslatableText("item.lockable_doors.lock.tooltip." + (keyed ? "keyed" : "blank"));
     text.setStyle(Style.EMPTY.withColor(keyed ? Formatting.GREEN : Formatting.GRAY));
     tooltip.add(text);
+    super.appendTooltip(stack, world, tooltip, context);
   }
 
   @Override

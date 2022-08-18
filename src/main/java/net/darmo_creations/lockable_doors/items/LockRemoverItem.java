@@ -4,6 +4,7 @@ import net.darmo_creations.lockable_doors.blocks.LockableBlock;
 import net.darmo_creations.lockable_doors.lock_system.LockData;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,6 +12,7 @@ import net.minecraft.item.ItemUsageContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Style;
+import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
@@ -18,6 +20,7 @@ import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -26,6 +29,13 @@ import java.util.Optional;
 public class LockRemoverItem extends Item {
   public LockRemoverItem(Settings settings) {
     super(settings);
+  }
+
+  @Override
+  public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
+    tooltip.add(new TranslatableText("item.lockable_doors.lock_remover.tooltip")
+        .setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
+    super.appendTooltip(stack, world, tooltip, context);
   }
 
   @Override
