@@ -1,6 +1,7 @@
 package net.darmo_creations.lockable_doors.blocks;
 
 import net.darmo_creations.lockable_doors.block_entities.LockableBlockEntity;
+import net.darmo_creations.lockable_doors.items.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
@@ -82,6 +83,10 @@ public class LockableDoorBlock extends DoorBlock implements LockableBlock, Block
 
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    ItemStack stackInHand = player.getStackInHand(hand);
+    if (stackInHand.isOf(ModItems.KEY) || stackInHand.isOf(ModItems.LOCK) || stackInHand.isOf(ModItems.LOCK_REMOVER)) {
+      return ActionResult.PASS;
+    }
     if (this.isLocked(world, pos)) {
       this.notifyLocked(world, pos, player);
       return ActionResult.FAIL;

@@ -59,7 +59,7 @@ public class KeyItem extends Item {
     }
     if (block instanceof LockableBlock bwl) {
       if (!bwl.hasLock(world, pos)) {
-        this.notifyErrorToPlayer(world, pos, player, "lockable_doors.message.no_lock");
+        this.notifyErrorToPlayer(player, "lockable_doors.message.no_lock");
         return ActionResult.FAIL;
       }
       ItemStack stack = context.getStack();
@@ -74,7 +74,7 @@ public class KeyItem extends Item {
         this.notifySuccessToPlayer(world, pos, player, !wasLocked);
         return ActionResult.SUCCESS;
       } else {
-        this.notifyErrorToPlayer(world, pos, player, "lockable_doors.message.wrong_key");
+        this.notifyErrorToPlayer(player, "lockable_doors.message.wrong_key");
       }
     }
     return ActionResult.FAIL;
@@ -127,13 +127,10 @@ public class KeyItem extends Item {
   /**
    * Notifies the given player an error has occured and plays a sound effect.
    *
-   * @param world   The world.
-   * @param pos     The block’s position.
    * @param player  The player to notify.
    * @param message The message’s translation key.
    */
-  protected void notifyErrorToPlayer(World world, final BlockPos pos, PlayerEntity player, final String message) {
-    world.playSound(null, pos, SoundEvents.BLOCK_CHEST_LOCKED, SoundCategory.BLOCKS, 1, 1);
+  protected void notifyErrorToPlayer(PlayerEntity player, final String message) {
     player.sendMessage(new TranslatableText(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
   }
 }

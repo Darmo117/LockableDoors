@@ -109,7 +109,7 @@ public final class ModBlocks {
   /**
    * Makes the given block flammable if the base one is too.
    *
-   * @param block     The block with a lock.
+   * @param block     The block to set the flammability of.
    * @param baseBlock The base block.
    */
   private static void setFlammability(final Block block, final Block baseBlock) {
