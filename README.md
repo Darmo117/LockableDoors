@@ -1,6 +1,11 @@
 This mod adds blocks and items to enable locking any vanilla door, trapdoor and fence gate.
 
-# How to use
+# Installation Requirements
+<a href="https://www.curseforge.com/minecraft/mc-mods/fabric-api" target="_blank"><img src="https://i.imgur.com/Ol1Tcf8.png" style="width:200px"/></a>
+
+This is a [Fabric](https://fabricmc.net/) mod.
+
+# How to Use
 
 To craft a lockable block, simply put the corresponding vanilla block and a lock housing in a crafting table.
 ![Lockable Block Craft](https://i.imgur.com/htxKVhm.png "Lockable Block Craft")
@@ -30,7 +35,7 @@ Keys can be melted back to a single iron nugget in a furnace/blast furnace.
 # Items
 ![Items](https://i.imgur.com/D92z72L.png "Items")
 
-# Crafts
+# Crafting
 ## Lock Housing
 ![Lock Housing](https://i.imgur.com/jeEAf4q.png "Lock Housing")
 ## Lock
