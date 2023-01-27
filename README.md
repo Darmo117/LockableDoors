@@ -45,5 +45,10 @@ Keys can be melted back to a single iron nugget in a furnace/blast furnace.
 ## Lock Remover
 ![Lock Remover](https://i.imgur.com/nGSoxAP.png "Lock Remover")
 
+# Localization
+- `en_us`: US English
+- `fr_fr`: French
+- `eo_uy`: Esperanto
+
 # License and usage
 This mod is available under the GPLv3 license. You are free to use it in any modpack as long as you credit me as the original mod’s author.
