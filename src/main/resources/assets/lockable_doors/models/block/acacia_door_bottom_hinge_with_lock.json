@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/door_bottom_rh",
+  "parent": "minecraft:block/door_bottom_right",
   "textures": {
     "top": "lockable_doors:block/acacia_door_top_with_lock",
     "bottom": "lockable_doors:block/acacia_door_bottom_with_lock"

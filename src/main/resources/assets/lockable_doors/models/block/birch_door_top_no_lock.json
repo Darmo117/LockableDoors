@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/door_top",
+  "parent": "minecraft:block/door_top_left",
   "textures": {
     "top": "lockable_doors:block/birch_door_top_no_lock",
     "bottom": "lockable_doors:block/birch_door_bottom_no_lock"
