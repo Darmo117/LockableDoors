@@ -13,7 +13,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.ItemScatterer;
@@ -33,7 +32,7 @@ public class LockRemoverItem extends Item {
 
   @Override
   public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
-    tooltip.add(new TranslatableText("item.lockable_doors.lock_remover.tooltip")
+    tooltip.add(Text.translatable("item.lockable_doors.lock_remover.tooltip")
         .setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
     super.appendTooltip(stack, world, tooltip, context);
   }
@@ -79,6 +78,6 @@ public class LockRemoverItem extends Item {
    * @param message The message’s translation key.
    */
   protected void notifyErrorToPlayer(PlayerEntity player, final String message) {
-    player.sendMessage(new TranslatableText(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
+    player.sendMessage(Text.translatable(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
   }
 }

@@ -11,7 +11,6 @@ import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -22,7 +21,7 @@ import net.minecraft.world.World;
  * The locksmithing station is used to prepare keys and locks.
  */
 public class LocksmithingStationBlock extends Block {
-  private static final Text TITLE = new TranslatableText("container.lockable_doors.locksmithing");
+  private static final Text TITLE = Text.translatable("container.lockable_doors.locksmithing");
 
   public LocksmithingStationBlock() {
     super(FabricBlockSettings.of(Material.WOOD)

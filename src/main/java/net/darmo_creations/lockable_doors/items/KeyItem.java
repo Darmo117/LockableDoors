@@ -15,7 +15,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
@@ -42,10 +41,10 @@ public class KeyItem extends Item {
     Optional<String> data = this.getData(stack);
     MutableText text;
     if (data.isEmpty()) {
-      text = new TranslatableText("item.lockable_doors.key.tooltip.blank")
+      text = Text.translatable("item.lockable_doors.key.tooltip.blank")
           .setStyle(Style.EMPTY.withColor(Formatting.GRAY));
     } else {
-      text = new TranslatableText("item.lockable_doors.key.tooltip.name", data.get())
+      text = Text.translatable("item.lockable_doors.key.tooltip.name", data.get())
           .setStyle(Style.EMPTY.withColor(Formatting.GREEN));
     }
     tooltip.add(text);
@@ -135,7 +134,7 @@ public class KeyItem extends Item {
    */
   protected void notifySuccessToPlayer(World world, final BlockPos pos, PlayerEntity player, final boolean locked) {
     world.playSound(null, pos, SoundEvents.BLOCK_CHEST_LOCKED, SoundCategory.BLOCKS, 1, 1);
-    MutableText message = new TranslatableText("lockable_doors.message.successfully_" + (locked ? "locked" : "unlocked"));
+    MutableText message = Text.translatable("lockable_doors.message.successfully_" + (locked ? "locked" : "unlocked"));
     player.sendMessage(message, true);
   }
 
@@ -146,7 +145,7 @@ public class KeyItem extends Item {
    * @param message The message’s translation key.
    */
   protected void notifyErrorToPlayer(PlayerEntity player, final String message) {
-    player.sendMessage(new TranslatableText(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
+    player.sendMessage(Text.translatable(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
   }
 
   /**
@@ -163,10 +162,10 @@ public class KeyItem extends Item {
       boolean keyFits = keyData.isPresent() && lockData.isPresent() && lockData.get().keyFits(keyData.get());
       MutableText message;
       if (keyFits) {
-        message = new TranslatableText("lockable_doors.message.key_fits_lock")
+        message = Text.translatable("lockable_doors.message.key_fits_lock")
             .setStyle(Style.EMPTY.withColor(Formatting.GREEN));
       } else {
-        message = new TranslatableText("lockable_doors.message.key_does_not_fit_lock")
+        message = Text.translatable("lockable_doors.message.key_does_not_fit_lock")
             .setStyle(Style.EMPTY.withColor(Formatting.RED));
       }
       player.sendMessage(message, true);

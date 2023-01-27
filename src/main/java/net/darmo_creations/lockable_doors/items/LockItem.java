@@ -16,7 +16,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
@@ -40,7 +39,7 @@ public class LockItem extends Item {
   @Override
   public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
     boolean keyed = this.getData(stack).isPresent();
-    MutableText text = new TranslatableText("item.lockable_doors.lock.tooltip." + (keyed ? "keyed" : "blank"));
+    MutableText text = Text.translatable("item.lockable_doors.lock.tooltip." + (keyed ? "keyed" : "blank"));
     text.setStyle(Style.EMPTY.withColor(keyed ? Formatting.GREEN : Formatting.GRAY));
     tooltip.add(text);
     super.appendTooltip(stack, world, tooltip, context);
@@ -128,6 +127,6 @@ public class LockItem extends Item {
    * @param message The message’s translation key.
    */
   protected void notifyErrorToPlayer(PlayerEntity player, final String message) {
-    player.sendMessage(new TranslatableText(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
+    player.sendMessage(Text.translatable(message).setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
   }
 }

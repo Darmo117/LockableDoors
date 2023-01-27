@@ -17,7 +17,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerListener;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 
@@ -49,7 +48,7 @@ public class LocksmithingStationScreen
     int i = (this.width - this.backgroundWidth) / 2;
     int j = (this.height - this.backgroundHeight) / 2;
     this.nameField = new TextFieldWidget(this.textRenderer, i + 62, j + 24, 103, 12,
-        new TranslatableText("container.lockable_doors.locksmithing.rename"));
+        Text.translatable("container.lockable_doors.locksmithing.rename"));
     this.nameField.setFocusUnlocked(false);
     this.nameField.setEditableColor(-1);
     this.nameField.setUneditableColor(-1);

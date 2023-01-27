@@ -16,7 +16,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
@@ -152,7 +152,7 @@ public interface LockableBlock {
    */
   default void notifyLocked(World world, BlockPos pos, PlayerEntity player) {
     world.playSound(null, pos, SoundEvents.BLOCK_CHEST_LOCKED, SoundCategory.BLOCKS, 1, 1);
-    MutableText message = new TranslatableText("lockable_doors.message.locked_block")
+    MutableText message = Text.translatable("lockable_doors.message.locked_block")
         .setStyle(Style.EMPTY.withColor(Formatting.RED));
     player.sendMessage(message, true);
   }
