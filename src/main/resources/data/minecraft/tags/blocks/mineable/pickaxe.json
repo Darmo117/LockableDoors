@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "lockable_doors:lockable_iron_door",
+    "lockable_doors:lockable_iron_trapdoor"
+  ]
+}

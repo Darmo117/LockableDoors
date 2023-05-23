@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "lockable_doors:lockable_oak_trapdoor",
+    "lockable_doors:lockable_birch_trapdoor",
+    "lockable_doors:lockable_spruce_trapdoor",
+    "lockable_doors:lockable_jungle_trapdoor",
+    "lockable_doors:lockable_acacia_trapdoor",
+    "lockable_doors:lockable_dark_oak_trapdoor",
+    "lockable_doors:lockable_crimson_trapdoor",
+    "lockable_doors:lockable_warped_trapdoor"
+  ]
+}
