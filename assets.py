@@ -8,7 +8,7 @@ replacer = sys.argv[3]
 for p in pathlib.Path('src/main/resources/assets').glob(file_pattern):
     file_name = p.name
     new_file = p.parent / p.name.replace(to_replace, replacer)
-    with p.open('r') as f:
+    with p.open(mode='r', encoding='UTF-8') as f:
         print(f'Converting {p}…')
         with new_file.open('w') as out:
             for line in f.readlines():
