@@ -1,6 +1,7 @@
 package net.darmo_creations.lockable_doors;
 
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.darmo_creations.lockable_doors.block_entities.ModBlockEntities;
 import net.darmo_creations.lockable_doors.blocks.ModBlocks;
@@ -41,7 +42,11 @@ public class LockableDoors implements ModInitializer {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    CONFIG = ModConfig.fromJSON(jsonElement);
+    if (jsonElement instanceof JsonObject o) {
+      CONFIG = ModConfig.fromJSON(o);
+    } else {
+      CONFIG = ModConfig.DEFAULT;
+    }
   }
 
   @Override

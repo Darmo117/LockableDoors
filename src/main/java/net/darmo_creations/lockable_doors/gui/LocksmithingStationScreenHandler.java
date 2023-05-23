@@ -1,5 +1,6 @@
 package net.darmo_creations.lockable_doors.gui;
 
+import net.darmo_creations.lockable_doors.LockableDoors;
 import net.darmo_creations.lockable_doors.blocks.LocksmithingStationBlock;
 import net.darmo_creations.lockable_doors.blocks.ModBlocks;
 import net.darmo_creations.lockable_doors.items.KeyItem;
@@ -67,8 +68,10 @@ public class LocksmithingStationScreenHandler extends ScreenHandler {
       public boolean canTakeItems(PlayerEntity playerEntity) {
         ItemStack inputStack = LocksmithingStationScreenHandler.this.input.getStack(0);
         Item item = inputStack.getItem();
+        boolean canRenameKeys = LockableDoors.CONFIG.canRenameKeys();
         return LocksmithingStationScreenHandler.this.data != null
-            && ((item instanceof KeyItem key && key.getData(inputStack).isEmpty()) || item instanceof LockItem);
+            && ((item instanceof KeyItem key && (key.getData(inputStack).isEmpty() || canRenameKeys))
+            || item instanceof LockItem);
       }
 
       @Override
