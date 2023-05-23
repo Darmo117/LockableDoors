@@ -1,10 +1,12 @@
 package net.darmo_creations.lockable_doors.gui;
 
 import net.darmo_creations.lockable_doors.LockableDoors;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 /**
  * Defines all screen handlers added by this mod.
@@ -22,7 +24,8 @@ public final class ModScreenHandlers {
    * @return The registered handler type.
    */
   private static <T extends ScreenHandler> ScreenHandlerType<T> register(final String id, final ScreenHandlerType.Factory<T> factory) {
-    return Registry.register(Registry.SCREEN_HANDLER, new Identifier(LockableDoors.MOD_ID, id), new ScreenHandlerType<>(factory));
+    return Registry.register(Registries.SCREEN_HANDLER, new Identifier(LockableDoors.MOD_ID, id),
+        new ScreenHandlerType<>(factory, FeatureFlags.VANILLA_FEATURES));
   }
 
   /**

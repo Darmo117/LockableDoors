@@ -117,7 +117,7 @@ public class LocksmithingStationScreenHandler extends ScreenHandler {
   }
 
   @Override
-  public ItemStack transferSlot(PlayerEntity player, int index) {
+  public ItemStack quickMove(PlayerEntity player, int index) {
     ItemStack itemStack = ItemStack.EMPTY;
     Slot slot = this.slots.get(index);
     if (slot.hasStack()) {
@@ -151,8 +151,8 @@ public class LocksmithingStationScreenHandler extends ScreenHandler {
   }
 
   @Override
-  public void close(PlayerEntity player) {
-    super.close(player);
+  public void onClosed(PlayerEntity player) {
+    super.onClosed(player);
     this.context.run((world, pos) -> this.dropInventory(player, this.input));
   }
 

@@ -26,6 +26,7 @@
     ]
   },
   "mixins": [
+    "expose_trapdoor_type.mixin.json"
   ],
 
   "depends": {

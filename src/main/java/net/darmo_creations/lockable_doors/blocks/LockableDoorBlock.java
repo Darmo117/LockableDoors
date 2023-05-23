@@ -2,10 +2,8 @@ package net.darmo_creations.lockable_doors.blocks;
 
 import net.darmo_creations.lockable_doors.block_entities.LockableBlockEntity;
 import net.darmo_creations.lockable_doors.items.ModItems;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.DoorBlock;
+import net.darmo_creations.lockable_doors.mixin.DoorBlockMixin;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.entity.Entity;
@@ -30,7 +28,7 @@ import java.util.Optional;
  */
 public class LockableDoorBlock extends DoorBlock implements LockableBlock, BlockEntityProvider {
   public LockableDoorBlock(final DoorBlock baseBlock) {
-    super(Settings.copy(baseBlock));
+    super(Settings.copy(baseBlock), ((DoorBlockMixin) baseBlock).getBlockSetType());
     this.setDefaultState(this.getDefaultState().with(HAS_LOCK, false));
   }
 
@@ -83,6 +81,9 @@ public class LockableDoorBlock extends DoorBlock implements LockableBlock, Block
 
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    if (this.material == Material.METAL) {
+      return ActionResult.PASS;
+    }
     ItemStack stackInHand = player.getStackInHand(hand);
     if (stackInHand.isOf(ModItems.KEY) || stackInHand.isOf(ModItems.LOCK) || stackInHand.isOf(ModItems.LOCK_REMOVER)) {
       return ActionResult.PASS;

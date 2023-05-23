@@ -2,6 +2,7 @@ package net.darmo_creations.lockable_doors.blocks;
 
 import net.darmo_creations.lockable_doors.block_entities.LockableBlockEntity;
 import net.darmo_creations.lockable_doors.items.ModItems;
+import net.darmo_creations.lockable_doors.mixin.FenceGateBlockMixin;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
@@ -26,7 +27,7 @@ import java.util.List;
  */
 public class LockableFenceGateBlock extends FenceGateBlock implements LockableBlock, BlockEntityProvider {
   public LockableFenceGateBlock(final FenceGateBlock baseBlock) {
-    super(Settings.copy(baseBlock));
+    super(Settings.copy(baseBlock), ((FenceGateBlockMixin) baseBlock).getType());
     this.setDefaultState(this.getDefaultState().with(HAS_LOCK, false));
   }
 

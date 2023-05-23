@@ -3,13 +3,15 @@ package net.darmo_creations.lockable_doors.blocks;
 import net.darmo_creations.lockable_doors.LockableDoors;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.impl.content.registry.FlammableBlockRegistryImpl;
 import net.minecraft.block.*;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 import java.util.function.Function;
 
@@ -18,7 +20,7 @@ import java.util.function.Function;
  */
 public final class ModBlocks {
   public static final Block LOCKSMITHING_STATION =
-      register("locksmithing_station", new LocksmithingStationBlock(), true);
+      register("locksmithing_station", new LocksmithingStationBlock());
 
   // Doors
   public static final Block LOCKABLE_OAK_DOOR =
@@ -37,6 +39,8 @@ public final class ModBlocks {
       registerLockableBlock("lockable_crimson_door", LockableDoorBlock::new, (DoorBlock) Blocks.CRIMSON_DOOR);
   public static final Block LOCKABLE_WARPED_DOOR =
       registerLockableBlock("lockable_warped_door", LockableDoorBlock::new, (DoorBlock) Blocks.WARPED_DOOR);
+  public static final Block LOCKABLE_IRON_DOOR =
+      registerLockableBlock("lockable_iron_door", LockableDoorBlock::new, (DoorBlock) Blocks.IRON_DOOR);
   // Trapdoors
   public static final Block LOCKABLE_OAK_TRAPDOOR =
       registerLockableBlock("lockable_oak_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.OAK_TRAPDOOR);
@@ -83,7 +87,7 @@ public final class ModBlocks {
    */
   private static <T extends Block, U extends Block> T registerLockableBlock(final String name, final Function<U, T> factory, final U baseBlock) {
     T lockableBlock = factory.apply(baseBlock);
-    register(name, lockableBlock, true);
+    register(name, lockableBlock);
     setFlammability(lockableBlock, baseBlock);
     return lockableBlock;
   }
@@ -91,18 +95,16 @@ public final class ModBlocks {
   /**
    * Registers a block and puts it in the mod’s item group.
    *
-   * @param name    Block’s name.
-   * @param block   Block to register.
-   * @param hasItem Whether the block should have an item.
-   * @param <T>     Type of the block to register.
+   * @param <T>   Type of the block to register.
+   * @param name  Block’s name.
+   * @param block Block to register.
    * @return The registered block.
    */
-  private static <T extends Block> T register(final String name, final T block, final boolean hasItem) {
-    Registry.register(Registry.BLOCK, new Identifier(LockableDoors.MOD_ID, name), block);
-    if (hasItem) {
-      Registry.register(Registry.ITEM, new Identifier(LockableDoors.MOD_ID, name),
-          new BlockItem(block, new FabricItemSettings().group(LockableDoors.ITEM_GROUP)));
-    }
+  private static <T extends Block> T register(final String name, final T block) {
+    Registry.register(Registries.BLOCK, new Identifier(LockableDoors.MOD_ID, name), block);
+    BlockItem blockItem = new BlockItem(block, new FabricItemSettings());
+    Registry.register(Registries.ITEM, new Identifier(LockableDoors.MOD_ID, name), blockItem);
+    ItemGroupEvents.modifyEntriesEvent(LockableDoors.ITEM_GROUP).register(content -> content.add(blockItem));
     return block;
   }
 
@@ -147,6 +149,7 @@ public final class ModBlocks {
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_DARK_OAK_DOOR, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_CRIMSON_DOOR, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_WARPED_DOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_IRON_DOOR, RenderLayer.getCutout());
 
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_OAK_TRAPDOOR, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_BIRCH_TRAPDOOR, RenderLayer.getCutout());

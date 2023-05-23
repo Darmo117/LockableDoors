@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "top": "lockable_doors:block/iron_door_top_with_lock",
+    "bottom": "lockable_doors:block/iron_door_bottom_with_lock"
+  }
+}

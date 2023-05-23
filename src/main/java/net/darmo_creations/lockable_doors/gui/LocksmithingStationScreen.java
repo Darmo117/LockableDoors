@@ -43,8 +43,6 @@ public class LocksmithingStationScreen
   }
 
   protected void setup() {
-    //noinspection ConstantConditions
-    this.client.keyboard.setRepeatEvents(true);
     int i = (this.width - this.backgroundWidth) / 2;
     int j = (this.height - this.backgroundHeight) / 2;
     this.nameField = new TextFieldWidget(this.textRenderer, i + 62, j + 24, 103, 12,
@@ -76,18 +74,18 @@ public class LocksmithingStationScreen
 
   @Override
   protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY) {
-    RenderSystem.setShader(GameRenderer::getPositionTexShader);
+    RenderSystem.setShader(GameRenderer::getPositionTexProgram);
     RenderSystem.setShaderColor(1, 1, 1, 1);
     RenderSystem.setShaderTexture(0, TEXTURE);
     int i = (this.width - this.backgroundWidth) / 2;
     int j = (this.height - this.backgroundHeight) / 2;
     // Draw full GUI
-    this.drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
+    drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
     if (!this.handler.getSlot(1).canTakeItems(this.handler.player)) {
-      this.drawTexture(matrices, i + 79, j + 48, 176, 0, 18, 21);
+      drawTexture(matrices, i + 79, j + 48, 176, 0, 18, 21);
     }
     // Draw text field background part
-    this.drawTexture(matrices, i + 59, j + 20, 0, this.backgroundHeight + (this.handler.getSlot(0).hasStack() ? 0 : 16), 110, 16);
+    drawTexture(matrices, i + 59, j + 20, 0, this.backgroundHeight + (this.handler.getSlot(0).hasStack() ? 0 : 16), 110, 16);
   }
 
   private void onRenamed(String name) {
@@ -126,8 +124,6 @@ public class LocksmithingStationScreen
   public void removed() {
     super.removed();
     this.handler.removeListener(this);
-    //noinspection ConstantConditions
-    this.client.keyboard.setRepeatEvents(false);
   }
 
   @Override
