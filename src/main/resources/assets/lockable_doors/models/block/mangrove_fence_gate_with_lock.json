@@ -1,0 +1,6 @@
+{
+  "parent": "lockable_doors:block/template_lockable_fence_gate",
+  "textures": {
+    "texture": "lockable_doors:block/mangrove_fence_gate_with_lock"
+  }
+}

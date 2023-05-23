@@ -14,6 +14,7 @@
   "block.lockable_doors.lockable_dark_oak_door": "Ŝlosebla malhelkverka pordo",
   "block.lockable_doors.lockable_crimson_door": "Ŝlosebla skarlata pordo",
   "block.lockable_doors.lockable_warped_door": "Ŝlosebla torda pordo",
+  "block.lockable_doors.lockable_mangrove_door": "Ŝlosebla mangla pordo",
   "block.lockable_doors.lockable_iron_door": "Ŝlosebla fera pordo",
 
   "block.lockable_doors.lockable_oak_trapdoor": "Ŝlosebla kverka klappordo",
@@ -24,6 +25,7 @@
   "block.lockable_doors.lockable_dark_oak_trapdoor": "Ŝlosebla malhelkverka klappordo",
   "block.lockable_doors.lockable_crimson_trapdoor": "Ŝlosebla skarlata klappordo",
   "block.lockable_doors.lockable_warped_trapdoor": "Ŝlosebla torda klappordo",
+  "block.lockable_doors.lockable_mangrove_trapdoor": "Ŝlosebla mangla klappordo",
   "block.lockable_doors.lockable_iron_trapdoor": "Ŝlosebla fera klappordo",
 
   "block.lockable_doors.lockable_oak_fence_gate": "Ŝlosebla kverka barilpordo",
@@ -34,6 +36,7 @@
   "block.lockable_doors.lockable_dark_oak_fence_gate": "Ŝlosebla malhelkverka barilpordo",
   "block.lockable_doors.lockable_crimson_fence_gate": "Ŝlosebla skarlata barilpordo",
   "block.lockable_doors.lockable_warped_fence_gate": "Ŝlosebla torda barilpordo",
+  "block.lockable_doors.lockable_mangrove_fence_gate": "Ŝlosebla mangla barilpordo",
 
   "item.lockable_doors.key": "Ŝlosilo",
   "item.lockable_doors.key.tooltip.blank": "Neuzinata",

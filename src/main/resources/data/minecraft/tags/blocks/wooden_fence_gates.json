@@ -8,6 +8,7 @@
     "lockable_doors:lockable_acacia_fence_gate",
     "lockable_doors:lockable_dark_oak_fence_gate",
     "lockable_doors:lockable_crimson_fence_gate",
-    "lockable_doors:lockable_warped_fence_gate"
+    "lockable_doors:lockable_warped_fence_gate",
+    "lockable_doors:lockable_mangrove_fence_gate"
   ]
 }

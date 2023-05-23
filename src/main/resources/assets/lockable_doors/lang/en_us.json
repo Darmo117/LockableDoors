@@ -14,6 +14,7 @@
   "block.lockable_doors.lockable_dark_oak_door": "Lockable Dark Oak Door",
   "block.lockable_doors.lockable_crimson_door": "Lockable Crimson Door",
   "block.lockable_doors.lockable_warped_door": "Lockable Warped Door",
+  "block.lockable_doors.lockable_mangrove_door": "Lockable Mangrove Door",
   "block.lockable_doors.lockable_iron_door": "Lockable Iron Door",
 
   "block.lockable_doors.lockable_oak_trapdoor": "Lockable Oak Trapdoor",
@@ -24,6 +25,7 @@
   "block.lockable_doors.lockable_dark_oak_trapdoor": "Lockable Dark Oak Trapdoor",
   "block.lockable_doors.lockable_crimson_trapdoor": "Lockable Crimson Trapdoor",
   "block.lockable_doors.lockable_warped_trapdoor": "Lockable Warped Trapdoor",
+  "block.lockable_doors.lockable_mangrove_trapdoor": "Lockable Mangrove Trapdoor",
   "block.lockable_doors.lockable_iron_trapdoor": "Lockable Iron Trapdoor",
 
   "block.lockable_doors.lockable_oak_fence_gate": "Lockable Oak Fence Gate",
@@ -34,6 +36,7 @@
   "block.lockable_doors.lockable_dark_oak_fence_gate": "Lockable Dark Oak Fence Gate",
   "block.lockable_doors.lockable_crimson_fence_gate": "Lockable Crimson Fence Gate",
   "block.lockable_doors.lockable_warped_fence_gate": "Lockable Warped Fence Gate",
+  "block.lockable_doors.lockable_mangrove_fence_gate": "Lockable Mangrove Fence Gate",
 
   "item.lockable_doors.key": "Key",
   "item.lockable_doors.key.tooltip.blank": "Blank",

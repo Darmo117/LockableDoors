@@ -8,6 +8,7 @@
     "lockable_doors:lockable_acacia_door",
     "lockable_doors:lockable_dark_oak_door",
     "lockable_doors:lockable_crimson_door",
-    "lockable_doors:lockable_warped_door"
+    "lockable_doors:lockable_warped_door",
+    "lockable_doors:lockable_mangrove_door"
   ]
 }

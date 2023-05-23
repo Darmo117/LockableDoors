@@ -1,0 +1,125 @@
+{
+  "variants": {
+    "has_lock=false,facing=east,in_wall=false,open=false": {
+      "y": 270,
+      "model": "lockable_doors:block/mangrove_fence_gate_no_lock"
+    },
+    "has_lock=false,facing=east,in_wall=false,open=true": {
+      "y": 270,
+      "model": "lockable_doors:block/mangrove_fence_gate_open_no_lock"
+    },
+    "has_lock=false,facing=east,in_wall=true,open=false": {
+      "y": 270,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_no_lock"
+    },
+    "has_lock=false,facing=east,in_wall=true,open=true": {
+      "y": 270,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_open_no_lock"
+    },
+    "has_lock=false,facing=north,in_wall=false,open=false": {
+      "y": 180,
+      "model": "lockable_doors:block/mangrove_fence_gate_no_lock"
+    },
+    "has_lock=false,facing=north,in_wall=false,open=true": {
+      "y": 180,
+      "model": "lockable_doors:block/mangrove_fence_gate_open_no_lock"
+    },
+    "has_lock=false,facing=north,in_wall=true,open=false": {
+      "y": 180,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_no_lock"
+    },
+    "has_lock=false,facing=north,in_wall=true,open=true": {
+      "y": 180,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_open_no_lock"
+    },
+    "has_lock=false,facing=south,in_wall=false,open=false": {
+      "model": "lockable_doors:block/mangrove_fence_gate_no_lock"
+    },
+    "has_lock=false,facing=south,in_wall=false,open=true": {
+      "model": "lockable_doors:block/mangrove_fence_gate_open_no_lock"
+    },
+    "has_lock=false,facing=south,in_wall=true,open=false": {
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_no_lock"
+    },
+    "has_lock=false,facing=south,in_wall=true,open=true": {
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_open_no_lock"
+    },
+    "has_lock=false,facing=west,in_wall=false,open=false": {
+      "y": 90,
+      "model": "lockable_doors:block/mangrove_fence_gate_no_lock"
+    },
+    "has_lock=false,facing=west,in_wall=false,open=true": {
+      "y": 90,
+      "model": "lockable_doors:block/mangrove_fence_gate_open_no_lock"
+    },
+    "has_lock=false,facing=west,in_wall=true,open=false": {
+      "y": 90,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_no_lock"
+    },
+    "has_lock=false,facing=west,in_wall=true,open=true": {
+      "y": 90,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_open_no_lock"
+    },
+
+    "has_lock=true,facing=east,in_wall=false,open=false": {
+      "y": 270,
+      "model": "lockable_doors:block/mangrove_fence_gate_with_lock"
+    },
+    "has_lock=true,facing=east,in_wall=false,open=true": {
+      "y": 270,
+      "model": "lockable_doors:block/mangrove_fence_gate_open_with_lock"
+    },
+    "has_lock=true,facing=east,in_wall=true,open=false": {
+      "y": 270,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_with_lock"
+    },
+    "has_lock=true,facing=east,in_wall=true,open=true": {
+      "y": 270,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_open_with_lock"
+    },
+    "has_lock=true,facing=north,in_wall=false,open=false": {
+      "y": 180,
+      "model": "lockable_doors:block/mangrove_fence_gate_with_lock"
+    },
+    "has_lock=true,facing=north,in_wall=false,open=true": {
+      "y": 180,
+      "model": "lockable_doors:block/mangrove_fence_gate_open_with_lock"
+    },
+    "has_lock=true,facing=north,in_wall=true,open=false": {
+      "y": 180,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_with_lock"
+    },
+    "has_lock=true,facing=north,in_wall=true,open=true": {
+      "y": 180,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_open_with_lock"
+    },
+    "has_lock=true,facing=south,in_wall=false,open=false": {
+      "model": "lockable_doors:block/mangrove_fence_gate_with_lock"
+    },
+    "has_lock=true,facing=south,in_wall=false,open=true": {
+      "model": "lockable_doors:block/mangrove_fence_gate_open_with_lock"
+    },
+    "has_lock=true,facing=south,in_wall=true,open=false": {
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_with_lock"
+    },
+    "has_lock=true,facing=south,in_wall=true,open=true": {
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_open_with_lock"
+    },
+    "has_lock=true,facing=west,in_wall=false,open=false": {
+      "y": 90,
+      "model": "lockable_doors:block/mangrove_fence_gate_with_lock"
+    },
+    "has_lock=true,facing=west,in_wall=false,open=true": {
+      "y": 90,
+      "model": "lockable_doors:block/mangrove_fence_gate_open_with_lock"
+    },
+    "has_lock=true,facing=west,in_wall=true,open=false": {
+      "y": 90,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_with_lock"
+    },
+    "has_lock=true,facing=west,in_wall=true,open=true": {
+      "y": 90,
+      "model": "lockable_doors:block/mangrove_fence_gate_wall_open_with_lock"
+    }
+  }
+}

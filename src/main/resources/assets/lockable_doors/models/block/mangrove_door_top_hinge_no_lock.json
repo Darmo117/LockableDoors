@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "textures": {
+    "top": "lockable_doors:block/mangrove_door_top_no_lock",
+    "bottom": "lockable_doors:block/mangrove_door_bottom_no_lock"
+  }
+}
