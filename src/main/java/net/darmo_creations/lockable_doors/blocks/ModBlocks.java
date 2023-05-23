@@ -2,6 +2,7 @@ package net.darmo_creations.lockable_doors.blocks;
 
 import net.darmo_creations.lockable_doors.LockableDoors;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -11,6 +12,10 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
@@ -136,12 +141,23 @@ public final class ModBlocks {
   }
 
   /**
-   * Dummy method called from {@link LockableDoors#onInitialize()} to register blocks:
-   * it forces the class to be loaded during mod initialization, while the registries are unlocked.
+   * Register block-related events.
    * <p>
    * Must be called on both clients and server.
    */
   public static void init() {
+    // Prevent breaking if block is locked and canDestroyLockedBlocks option is false
+    AttackBlockCallback.EVENT.register((player, world, hand, pos, direction) -> {
+      if (!player.isCreative()
+          && world.getBlockState(pos).getBlock() instanceof LockableBlock b
+          && b.isLocked(world, pos)
+          && !LockableDoors.CONFIG.canDestroyLockedBlocks()) {
+        player.sendMessage(Text.translatable("lockable_doors.message.cannot_destroy_locked_block")
+            .setStyle(Style.EMPTY.withColor(Formatting.RED)), true);
+        return ActionResult.FAIL;
+      }
+      return ActionResult.PASS;
+    });
   }
 
   /**
