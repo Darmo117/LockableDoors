@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "lockable_doors",
   "version": "${version}",
-
   "name": "Lockable Doors",
   "description": "A simple mod that enables locking any vanilla wooden door, trapdoor or fence gate.",
   "authors": [
@@ -12,10 +11,8 @@
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/lockable-doors",
     "sources": "https://github.com/FabricMC/lockable-doors"
   },
-
   "license": "GPLv3",
   "icon": "assets/lockable_doors/icon.png",
-
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -28,14 +25,10 @@
   "mixins": [
     "expose_trapdoor_type.mixin.json"
   ],
-
   "depends": {
-    "fabricloader": ">=0.14.13",
+    "fabricloader": ">=0.14.19",
     "fabric": "*",
-    "minecraft": "~1.19.2",
+    "minecraft": "~1.19.4",
     "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }
