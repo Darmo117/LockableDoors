@@ -58,6 +58,8 @@ public final class ModBlocks {
       registerLockableBlock("lockable_crimson_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.CRIMSON_TRAPDOOR);
   public static final Block LOCKABLE_WARPED_TRAPDOOR =
       registerLockableBlock("lockable_warped_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.WARPED_TRAPDOOR);
+  public static final Block LOCKABLE_IRON_TRAPDOOR =
+      registerLockableBlock("lockable_iron_trapdoor", LockableTrapdoorBlock::new, (TrapdoorBlock) Blocks.IRON_TRAPDOOR);
   // Fence gates
   public static final Block LOCKABLE_OAK_FENCE_GATE =
       registerLockableBlock("lockable_oak_fence_gate", LockableFenceGateBlock::new, (FenceGateBlock) Blocks.OAK_FENCE_GATE);
@@ -159,6 +161,7 @@ public final class ModBlocks {
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_DARK_OAK_TRAPDOOR, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_CRIMSON_TRAPDOOR, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_WARPED_TRAPDOOR, RenderLayer.getCutout());
+    BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_IRON_TRAPDOOR, RenderLayer.getCutout());
 
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_OAK_FENCE_GATE, RenderLayer.getCutout());
     BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LOCKABLE_BIRCH_FENCE_GATE, RenderLayer.getCutout());

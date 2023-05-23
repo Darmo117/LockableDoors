@@ -3,10 +3,7 @@ package net.darmo_creations.lockable_doors.blocks;
 import net.darmo_creations.lockable_doors.block_entities.LockableBlockEntity;
 import net.darmo_creations.lockable_doors.items.ModItems;
 import net.darmo_creations.lockable_doors.mixin.TrapdoorBlockMixin;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.TrapdoorBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -53,6 +50,9 @@ public class LockableTrapdoorBlock extends TrapdoorBlock implements LockableBloc
 
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    if (this.material == Material.METAL) {
+      return ActionResult.PASS;
+    }
     ItemStack stackInHand = player.getStackInHand(hand);
     if (stackInHand.isOf(ModItems.KEY) || stackInHand.isOf(ModItems.LOCK) || stackInHand.isOf(ModItems.LOCK_REMOVER)) {
       return ActionResult.PASS;
